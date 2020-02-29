@@ -28,4 +28,14 @@ void dsp_convolution(dsp_val_t *dest_sig, dsp_val_t *input_sig, dsp_len_t input_
                 dsp_val_t *impulse_resp, dsp_len_t impulse_resp_len);
 
 
+/**
+ * @brief Calculate running sum
+ * 
+ * @param dest_sig destination signal array
+ * @param input_sig input source signal array
+ * @param input_sig_len input signal length
+ */
+void dsp_running_sum(dsp_val_t *dest_sig,  dsp_val_t *input_sig, dsp_len_t input_sig_len);
+
+
 #endif

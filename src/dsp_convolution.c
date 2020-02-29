@@ -35,4 +35,18 @@ void dsp_convolution(dsp_val_t *dest_sig, dsp_val_t *input_sig, dsp_len_t input_
     }
 }
 
+/**
+ * @brief Calculate running sum
+ * 
+ * @param dest_sig destination signal array
+ * @param input_sig input source signal array
+ * @param input_sig_len input signal length
+ */
+void dsp_running_sum(dsp_val_t *dest_sig,  dsp_val_t *input_sig, dsp_len_t input_sig_len)
+{
+    dsp_len_t i;
 
+    for(i = 1, *dest_sig = *input_sig; i < input_sig_len; i++) {
+        *(dest_sig + i) += *(input_sig + i - 1);
+    }
+}
