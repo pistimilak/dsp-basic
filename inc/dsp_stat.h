@@ -22,7 +22,7 @@
  * @param len lenght of array
  * @return dsp_val_t mean value
  */
-dsp_val_t dsp_sig_mean(dsp_val_t *sig, dsp_len_t len);
+dsp_val_t dsp_sig_mean(dsp_val_t *sig, dsp_size_t len);
 
 
 /**
@@ -33,7 +33,7 @@ dsp_val_t dsp_sig_mean(dsp_val_t *sig, dsp_len_t len);
  * @param len length of signal
  * @return dsp_val_t variance value
  */
-dsp_val_t dsp_sig_variance(dsp_val_t *sig, dsp_val_t sig_mean, dsp_len_t len);
+dsp_val_t dsp_sig_variance(dsp_val_t *sig, dsp_val_t sig_mean, dsp_size_t len);
 
 /**
  * @brief Signal standard deviation
