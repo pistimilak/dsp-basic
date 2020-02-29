@@ -37,7 +37,8 @@ sig_val_t signal_variance(sig_val_t *sig, sig_val_t sig_mean, sig_len_t len);
 
 /**
  * @brief Signal standard deviation
- * 
+ * How far xi deviates from the mean:
+ * sigma = sqrt((1/(N-1)) * sum(pow(xi-u, 2)))
  * @param sig_variance signal variance
  * @return sig_val_t standard deviation value of the signal
  */
