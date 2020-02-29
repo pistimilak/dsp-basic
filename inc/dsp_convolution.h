@@ -15,4 +15,17 @@
 
 #include "dsp_common.h"
 
+/**
+ * @brief DSP Convolution
+ * 
+ * @param dest_sig destination output array
+ * @param input_sig input signal array
+ * @param input_sig_len input signal length
+ * @param impulse_resp impulse response signal array
+ * @param impulse_resp_len impulse response signal length
+ */
+void dsp_convolution(dsp_val_t *dest_sig, dsp_val_t *input_sig, dsp_len_t input_sig_len, 
+                dsp_val_t *impulse_resp, dsp_len_t impulse_resp_len);
+
+
 #endif
