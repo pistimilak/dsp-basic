@@ -44,8 +44,8 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
     // calc re and im arrays as result
     for(k = 0; k < (input_sig_len / 2); k++) {
         for(i = 0; i < input_sig_len; i++) {
-            *(dest_rex + k) += *(input_sig + i) * cos(2 * M_PI * k *i / input_sig_len);
-            *(dest_imx + k) -= *(input_sig + i) * sin(2 * M_PI * k *i / input_sig_len);
+            *(dest_rex + k) += *(input_sig + i) * cos(2.0 * M_PI * k *i / input_sig_len);
+            *(dest_imx + k) -= *(input_sig + i) * sin(2.0 * M_PI * k *i / input_sig_len);
         }
     }
 }
@@ -63,25 +63,27 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
 void dsp_idft(dsp_val_t *dest_sig, dsp_val_t *input_rex,  dsp_val_t *input_imx, dsp_size_t idft_len)
 {
     dsp_size_t i, k;
-     
+    dsp_val_t div_rex = 2.0, div_imx = -2.0; // dividers
+
     // prepare input rex and imx
     // exception at zero index
-    *input_rex /=  2.0;
-    *input_imx /= -2.0; 
+    *input_rex /=  div_rex;
+    *input_imx /= div_imx; 
 
-    for(k = 1; k < idft_len / 2; k++) {
-        *(input_rex + k) /= ((dsp_val_t)idft_len / 2.0);
-        *(input_imx + k) /= -1.0 * ((dsp_val_t)idft_len / 2.0);
+    for(k = 1, div_rex = ((dsp_val_t)idft_len / 2.0), div_imx = -1.0 * ((dsp_val_t)idft_len / 2.0); 
+        k < idft_len / 2; k++) {
+        *(input_rex + k) /= div_rex;
+        *(input_imx + k) /= div_imx;
     }
 
     // reset destination array
     for(i = 0; i < idft_len; *(dest_sig + i) = 0.0, i++);
 
     // calc output signal
-    for(k = 0; k < idft_len; k++) {
+    for(k = 0; k < idft_len / 2; k++) {
         for(i = 0; i < idft_len; i++) {
-            *(dest_sig + i) += input_rex[k] * cos(2 * M_PI * k * i / idft_len);
-            *(dest_sig + i) += input_imx[k] * sin(2 * M_PI * k * i / idft_len);
+            *(dest_sig + i) += *(input_rex + k) * cos(2.0 * M_PI * k * i / idft_len);
+            *(dest_sig + i) += *(input_imx + k) * sin(2.0 * M_PI * k * i / idft_len);
         }
     }
 }
