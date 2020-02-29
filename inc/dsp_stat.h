@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef __SIGNAL_STAT_H__
-#define __SIGNAL_STAT_H__
+#ifndef __DSP_STAT_H__
+#define __DSP_STAT_H__
 
 #include "dsp_common.h"
 
@@ -20,9 +20,9 @@
  * mu = 1/N * sum(xi)
  * @param sig signal array 
  * @param len lenght of array
- * @return sig_val_t mean value
+ * @return dsp_val_t mean value
  */
-sig_val_t signal_mean(sig_val_t *sig, sig_len_t len);
+dsp_val_t dsp_sig_mean(dsp_val_t *sig, dsp_len_t len);
 
 
 /**
@@ -31,18 +31,18 @@ sig_val_t signal_mean(sig_val_t *sig, sig_len_t len);
  * @param sig signal array
  * @param sig_mean signal mean value
  * @param len length of signal
- * @return sig_val_t variance value
+ * @return dsp_val_t variance value
  */
-sig_val_t signal_variance(sig_val_t *sig, sig_val_t sig_mean, sig_len_t len);
+dsp_val_t dsp_sig_variance(dsp_val_t *sig, dsp_val_t sig_mean, dsp_len_t len);
 
 /**
  * @brief Signal standard deviation
  * How far xi deviates from the mean:
  * sigma = sqrt((1/(N-1)) * sum(pow(xi-u, 2)))
  * @param sig_variance signal variance
- * @return sig_val_t standard deviation value of the signal
+ * @return dsp_val_t standard deviation value of the signal
  */
-sig_val_t signal_std_dev(sig_val_t sig_variance);
+dsp_val_t dsp_sig_std_dev(dsp_val_t sig_variance);
 
 
 #endif

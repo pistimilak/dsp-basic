@@ -9,23 +9,23 @@
  * 
  */
 
-#include "signal_stat.h"
+#include "dsp_stat.h"
 
 
 
 /*
 Signal mean
 */
-sig_val_t signal_mean(sig_val_t *sig, sig_len_t len)
+dsp_val_t signal_mean(dsp_val_t *sig, dsp_len_t len)
 {
-	sig_len_t i;
-	sig_val_t mean = 0;
+	dsp_len_t i;
+	dsp_val_t mean = 0;
 	
 	for (i = 0; i < len; i++) {
 		mean += *(sig + i);
 	}
 	
-	mean /= (sig_val_t)len;
+	mean /= (dsp_val_t)len;
 	return mean;
 }
 
@@ -33,16 +33,16 @@ sig_val_t signal_mean(sig_val_t *sig, sig_len_t len)
 /*
 Signal varriance
 */
-sig_val_t signal_variance(sig_val_t *sig, sig_val_t sig_mean, sig_len_t len)
+dsp_val_t signal_variance(dsp_val_t *sig, dsp_val_t sig_mean, dsp_len_t len)
 {
-	sig_len_t i;
-	sig_val_t variance = 0;
+	dsp_len_t i;
+	dsp_val_t variance = 0;
 	
 	for (i = 0; i < len; i++) {
 		variance += pow(*(sig + i) - sig_mean, 2);
 	}
 	
-	variance /= (sig_val_t)(len - 1);
+	variance /= (dsp_val_t)(len - 1);
 	return variance;
 }
 
@@ -50,7 +50,7 @@ sig_val_t signal_variance(sig_val_t *sig, sig_val_t sig_mean, sig_len_t len)
 /*
 Signal standard deviation
 */
-sig_val_t signal_std_dev(sig_val_t sig_variance)
+dsp_val_t signal_std_dev(dsp_val_t sig_variance)
 {
 	return sqrt(sig_variance);
 }
