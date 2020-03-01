@@ -55,6 +55,7 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
  * Synthesing sine and cosine waves to one signal
  * 		Re negX[k] = Re X[k] / N / 2 Except k = 0 then Re X[k] / N
  * 		Im negX[k] = Im X[k] / N / 2 Except k = 0 then Re X[k] / N
+ * 
  * @param dest_sig destination output signal array
  * @param input_rex input rex signal array 
  * @param input_imx input imx signal array
@@ -84,6 +85,74 @@ void dsp_idft(dsp_val_t *dest_sig, dsp_val_t *input_rex,  dsp_val_t *input_imx, 
         for(i = 0; i < idft_len; i++) {
             *(dest_sig + i) += *(input_rex + k) * cos(2.0 * M_PI * k * i / idft_len);
             *(dest_sig + i) += *(input_imx + k) * sin(2.0 * M_PI * k * i / idft_len);
+        }
+    }
+}
+
+
+/**
+ * @brief Calculate Discrete Fourier Transform magnitude signal from rex and imx
+ * Absoulet value of complex number for each point.
+ * 
+ * @param dest_mag destination signal
+ * @param rex real part array
+ * @param imx imaginary part array
+ * @param mag_len length of magnitude
+ */
+void dsp_dft_magnitude(dsp_val_t *dest_mag, dsp_val_t *rex, dsp_val_t *imx, dsp_size_t mag_len)
+{
+    dsp_size_t i;
+
+    for(i = 0; i < mag_len; i++) {
+        *(dest_mag + i) = sqrt( pow(*(rex + i), 2) + pow(*(imx + i), 2) );
+    }
+}
+
+/**
+ * @brief Convert Rectangle notation to Polar notation
+ * Rectengular notation:
+ * Re X[k] , Im X [k]
+ * 
+ * Polar Notation:
+ * Mag X[k], Phase X[k]
+ * M = sqrt( pow(A, 2), pow(B, 2) )
+ * Theta = arctan(B/A)
+ * 
+ * Rectengular to Polar conversion
+ * Mag[k] = sqrt( pow(ReX[k], 2), pow(ImX[k], 2) )
+ * Phase[k] = arctan(ImX[k] / ReX[k])
+ * 
+ * ReX[k] = MagX[k] * cos(PhaseX[k])
+ * ImX[k] = MagX[k] * sin(PhaseX[k])
+ * 
+ * @param mag_output magnitude output destination array
+ * @param phase_output phase output destination array
+ * @param rex_input ReX input signal array
+ * @param imx_input ImX input signal arrau
+ * @param sig_len Length of ReX and Imx
+ */
+void dsp_rect2polar(dsp_val_t *mag_output, dsp_val_t *phase_output,
+                    dsp_val_t *rex_input, dsp_val_t *imx_input, 
+                    dsp_size_t sig_len)
+{
+    dsp_size_t k;
+
+    for(k = 0; k < sig_len; k++) {
+        // magnitude
+        *(mag_output + k) = sqrt( pow(*(rex_input + k), 2) + pow(*(imx_input + k), 2) );
+        
+        // phase rules
+        if(*(rex_input + k) == 0) {
+            *(rex_input + k) = pow(10, -20);
+            *(phase_output +k) = atan(*(imx_input + k) / *(rex_input + k));
+        }
+        
+        if(*(rex_input + k) < 0 && *(imx_input + k) < 0) {
+            *(phase_output + k) -= M_PI;
+        }
+
+        if(*(rex_input + k) < 0 && *(imx_input + k) >= 0) {
+            *(phase_output + k) += M_PI;
         }
     }
 }

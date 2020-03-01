@@ -53,4 +53,44 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
 void dsp_idft(dsp_val_t *dest_sig, dsp_val_t *input_rex,  dsp_val_t *input_imx, dsp_size_t idft_len);
 
 
+/**
+ * @brief Calculate Discrete Fourier Transform magnitude signal from rex and imx
+ * Absoulet value of complex number for each point.
+ * 
+ * @param dest_mag destination signal
+ * @param rex real part array
+ * @param imx imaginary part array
+ * @param mag_len length of magnitude
+ */
+void dsp_dft_magnitude(dsp_val_t *dest_mag, dsp_val_t *rex, dsp_val_t *imx, dsp_size_t mag_len);
+
+
+/**
+ * @brief Convert Rectangle notation to Polar notation
+ * Rectengular notation:
+ * Re X[k] , Im X [k]
+ * 
+ * Polar Notation:
+ * Mag X[k], Phase X[k]
+ * M = sqrt( pow(A, 2), pow(B, 2) )
+ * Theta = arctan(B/A)
+ * 
+ * Rectengular to Polar conversion
+ * Mag[k] = sqrt( pow(ReX[k], 2), pow(ImX[k], 2) )
+ * Phase[k] = arctan(ImX[k] / ReX[k])
+ * 
+ * ReX[k] = MagX[k] * cos(PhaseX[k])
+ * ImX[k] = MagX[k] * sin(PhaseX[k])
+ * 
+ * @param mag_output magnitude output destination array
+ * @param phase_output phase output destination array
+ * @param rex_input ReX input signal array
+ * @param imx_input ImX input signal arrau
+ * @param sig_len Length of ReX and Imx
+ */
+void dsp_rect2polar(dsp_val_t *mag_output, dsp_val_t *phase_output,
+                    dsp_val_t *rex_input, dsp_val_t *imx_input, 
+                    dsp_size_t sig_len);
+
+
 #endif

@@ -16,9 +16,9 @@
 /*
 Signal mean
 */
-dsp_val_t signal_mean(dsp_val_t *sig, dsp_len_t len)
+dsp_val_t signal_mean(dsp_val_t *sig, dsp_size_t len)
 {
-	dsp_len_t i;
+	dsp_size_t i;
 	dsp_val_t mean = 0;
 	
 	for (i = 0; i < len; i++) {
@@ -33,9 +33,9 @@ dsp_val_t signal_mean(dsp_val_t *sig, dsp_len_t len)
 /*
 Signal varriance
 */
-dsp_val_t signal_variance(dsp_val_t *sig, dsp_val_t sig_mean, dsp_len_t len)
+dsp_val_t signal_variance(dsp_val_t *sig, dsp_val_t sig_mean, dsp_size_t len)
 {
-	dsp_len_t i;
+	dsp_size_t i;
 	dsp_val_t variance = 0;
 	
 	for (i = 0; i < len; i++) {

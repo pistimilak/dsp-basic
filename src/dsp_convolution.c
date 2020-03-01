@@ -19,10 +19,10 @@
  * @param impulse_resp impulse response signal array
  * @param impulse_resp_len impulse response signal length
  */
-void dsp_convolution(dsp_val_t *dest_sig, dsp_val_t *input_sig, dsp_len_t input_sig_len, 
-                dsp_val_t *impulse_resp, dsp_len_t impulse_resp_len)
+void dsp_convolution(dsp_val_t *dest_sig, dsp_val_t *input_sig, dsp_size_t input_sig_len, 
+                dsp_val_t *impulse_resp, dsp_size_t impulse_resp_len)
 {
-    dsp_len_t i, j;
+    dsp_size_t i, j;
 
     // reset destination array
     for(i = 0; i < (input_sig_len + impulse_resp_len); *(dest_sig + i) = 0.0, i++);
@@ -42,9 +42,9 @@ void dsp_convolution(dsp_val_t *dest_sig, dsp_val_t *input_sig, dsp_len_t input_
  * @param input_sig input source signal array
  * @param input_sig_len input signal length
  */
-void dsp_running_sum(dsp_val_t *dest_sig,  dsp_val_t *input_sig, dsp_len_t input_sig_len)
+void dsp_running_sum(dsp_val_t *dest_sig,  dsp_val_t *input_sig, dsp_size_t input_sig_len)
 {
-    dsp_len_t i;
+    dsp_size_t i;
 
     for(i = 1, *dest_sig = *input_sig; i < input_sig_len; i++) {
         *(dest_sig + i) += *(input_sig + i - 1);
