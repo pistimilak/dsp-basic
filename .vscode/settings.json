@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "dsp_common.h": "c",
+        "stdio.h": "c",
+        "dsp_stat.h": "c"
+    }
+}
