@@ -1,0 +1,89 @@
+GAS LISTING /tmp/ccLPYKzB.s 			page 1
+
+
+   1              		.file	"dsp_convolution.c"
+   2              		.text
+   3              		.section	.text.dsp_convolution,"ax",@progbits
+   4              		.globl	dsp_convolution
+   6              	dsp_convolution:
+   7              	.LFB0:
+   8              		.cfi_startproc
+   9 0000 B8000000 		movl	$0, %eax
+   9      00
+  10 0005 EB0C     		jmp	.L2
+  11              	.L3:
+  12 0007 48C704C7 		movq	$0x000000000, (%rdi,%rax,8)
+  12      00000000 
+  13 000f 4883C001 		addq	$1, %rax
+  14              	.L2:
+  15 0013 4E8D0C02 		leaq	(%rdx,%r8), %r9
+  16 0017 4939C1   		cmpq	%rax, %r9
+  17 001a 77EB     		ja	.L3
+  18 001c 41BA0000 		movl	$0, %r10d
+  18      0000
+  19 0022 EB2A     		jmp	.L4
+  20              	.L5:
+  21 0024 4D8D0C02 		leaq	(%r10,%rax), %r9
+  22 0028 4E8D0CCF 		leaq	(%rdi,%r9,8), %r9
+  23 002c F20F1004 		movsd	(%rcx,%rax,8), %xmm0
+  23      C1
+  24 0031 F2420F59 		mulsd	(%rsi,%r10,8), %xmm0
+  24      04D6
+  25 0037 F2410F58 		addsd	(%r9), %xmm0
+  25      01
+  26 003c F2410F11 		movsd	%xmm0, (%r9)
+  26      01
+  27 0041 4883C001 		addq	$1, %rax
+  28              	.L6:
+  29 0045 4C39C0   		cmpq	%r8, %rax
+  30 0048 72DA     		jb	.L5
+  31 004a 4983C201 		addq	$1, %r10
+  32              	.L4:
+  33 004e 4939D2   		cmpq	%rdx, %r10
+  34 0051 7307     		jnb	.L8
+  35 0053 B8000000 		movl	$0, %eax
+  35      00
+  36 0058 EBEB     		jmp	.L6
+  37              	.L8:
+  38 005a F3C3     		rep ret
+  39              		.cfi_endproc
+  40              	.LFE0:
+  42              		.section	.text.dsp_running_sum,"ax",@progbits
+  43              		.globl	dsp_running_sum
+  45              	dsp_running_sum:
+  46              	.LFB1:
+  47              		.cfi_startproc
+  48 0000 F20F1006 		movsd	(%rsi), %xmm0
+  49 0004 F20F1107 		movsd	%xmm0, (%rdi)
+  50 0008 B8010000 		movl	$1, %eax
+  50      00
+  51 000d EB1F     		jmp	.L10
+GAS LISTING /tmp/ccLPYKzB.s 			page 2
+
+
+  52              	.L11:
+  53 000f 4C8D04C5 		leaq	0(,%rax,8), %r8
+  53      00000000 
+  54 0017 4A8D0C07 		leaq	(%rdi,%r8), %rcx
+  55 001b F20F1001 		movsd	(%rcx), %xmm0
+  56 001f F2420F58 		addsd	-8(%rsi,%r8), %xmm0
+  56      4406F8
+  57 0026 F20F1101 		movsd	%xmm0, (%rcx)
+  58 002a 4883C001 		addq	$1, %rax
+  59              	.L10:
+  60 002e 4839D0   		cmpq	%rdx, %rax
+  61 0031 72DC     		jb	.L11
+  62 0033 F3C3     		rep ret
+  63              		.cfi_endproc
+  64              	.LFE1:
+  66              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+  67              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccLPYKzB.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 dsp_convolution.c
+     /tmp/ccLPYKzB.s:6      .text.dsp_convolution:0000000000000000 dsp_convolution
+     /tmp/ccLPYKzB.s:45     .text.dsp_running_sum:0000000000000000 dsp_running_sum
+
+NO UNDEFINED SYMBOLS
