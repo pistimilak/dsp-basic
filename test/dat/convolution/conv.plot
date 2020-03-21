@@ -3,6 +3,8 @@
 # $ gnuplot -p conv.plot
 
 reset
+set terminal canvas size 1024,768
+set output 'conv.html'
 set size 1,1
 set multiplot
 set size 0.5,0.5

@@ -122,7 +122,7 @@ int main(void)
     dsp_val_t running_sum_ouptut_signal[INP_SIG_F32_1K_15K_SIZE];
 
     /*Running sum algorithm*/
-    dsp_running_sum(running_sum_ouptut_signal, InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
+    dsp_running_sum(running_sum_ouptut_signal, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
 
     /*Cerate runing sum input signal*/
     if(!create_dat_file("../dat/convolution/rsum_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 

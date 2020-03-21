@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccLPYKzB.s 			page 1
+GAS LISTING /tmp/cciHrTXo.s 			page 1
 
 
    1              		.file	"dsp_convolution.c"
@@ -57,33 +57,37 @@ GAS LISTING /tmp/ccLPYKzB.s 			page 1
   49 0004 F20F1107 		movsd	%xmm0, (%rdi)
   50 0008 B8010000 		movl	$1, %eax
   50      00
-  51 000d EB1F     		jmp	.L10
-GAS LISTING /tmp/ccLPYKzB.s 			page 2
+  51 000d EB25     		jmp	.L10
+GAS LISTING /tmp/cciHrTXo.s 			page 2
 
 
   52              	.L11:
-  53 000f 4C8D04C5 		leaq	0(,%rax,8), %r8
+  53 000f 488D0CC5 		leaq	0(,%rax,8), %rcx
   53      00000000 
-  54 0017 4A8D0C07 		leaq	(%rdi,%r8), %rcx
-  55 001b F20F1001 		movsd	(%rcx), %xmm0
-  56 001f F2420F58 		addsd	-8(%rsi,%r8), %xmm0
-  56      4406F8
-  57 0026 F20F1101 		movsd	%xmm0, (%rcx)
-  58 002a 4883C001 		addq	$1, %rax
-  59              	.L10:
-  60 002e 4839D0   		cmpq	%rdx, %rax
-  61 0031 72DC     		jb	.L11
-  62 0033 F3C3     		rep ret
-  63              		.cfi_endproc
-  64              	.LFE1:
-  66              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-  67              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccLPYKzB.s 			page 3
+  54 0017 4C8D040F 		leaq	(%rdi,%rcx), %r8
+  55 001b F20F1004 		movsd	(%rsi,%rcx), %xmm0
+  55      0E
+  56 0020 F20F5844 		addsd	-8(%rdi,%rcx), %xmm0
+  56      0FF8
+  57 0026 F2410F58 		addsd	(%r8), %xmm0
+  57      00
+  58 002b F2410F11 		movsd	%xmm0, (%r8)
+  58      00
+  59 0030 4883C001 		addq	$1, %rax
+  60              	.L10:
+  61 0034 4839D0   		cmpq	%rdx, %rax
+  62 0037 72D6     		jb	.L11
+  63 0039 F3C3     		rep ret
+  64              		.cfi_endproc
+  65              	.LFE1:
+  67              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+  68              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/cciHrTXo.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 dsp_convolution.c
-     /tmp/ccLPYKzB.s:6      .text.dsp_convolution:0000000000000000 dsp_convolution
-     /tmp/ccLPYKzB.s:45     .text.dsp_running_sum:0000000000000000 dsp_running_sum
+     /tmp/cciHrTXo.s:6      .text.dsp_convolution:0000000000000000 dsp_convolution
+     /tmp/cciHrTXo.s:45     .text.dsp_running_sum:0000000000000000 dsp_running_sum
 
 NO UNDEFINED SYMBOLS

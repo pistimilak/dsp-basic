@@ -46,7 +46,8 @@ void dsp_running_sum(dsp_val_t *dest_sig,  dsp_val_t *input_sig, dsp_size_t inpu
 {
     dsp_size_t i;
 
+    /*init start point of dest array and start the iteration from first element*/
     for(i = 1, *dest_sig = *input_sig; i < input_sig_len; i++) {
-        *(dest_sig + i) += *(input_sig + i - 1);
+        *(dest_sig + i) += *(dest_sig + i - 1) + *(input_sig + i);
     }
 }
