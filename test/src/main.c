@@ -16,6 +16,7 @@
 #include "dsp_common.h"
 #include "dsp_stat.h"
 #include "dsp_convolution.h"
+#include "dsp_dft.h"
 #include "waveforms.h"
 
 #define STR_BUFF_SIZE           1000
@@ -23,7 +24,7 @@
 /* Test cases */
 #define TEST_SIG_STATISTIC      1
 #define TEST_CONVOLUTION        1
-#define TEST_RUNING_SUM         1
+#define TEST_DFT                1
 
 int create_dat_file(const char *fname, const dsp_val_t *data_array, const dsp_size_t size);
 
@@ -55,8 +56,16 @@ int main(void)
         printf("Absolute path of executable:\t%s (len: %d)\n", exe_abs_path, strlen(exe_abs_path));
     }
 
+    printf("Testing DSP library\n");
+    printf("===================\n");
+    printf("Developer: Istvan Milak\n\n");
+    printf("The software generate the calculation result *.dat files\n");
+    printf("You can find the correspondig dat files in test/dat/* dirs with html output and gnuplot scripts\n");
+    printf("\n");
 
+//////////////////////////////////////////////////////////////////////////////
 #if TEST_SIG_STATISTIC
+//////////////////////////////////////////////////////////////////////////////
 /**
  * @brief Testing Signal statistic
  * test signal: InputSignal_f32_1kHz_15kHz
@@ -77,14 +86,14 @@ int main(void)
 
 #endif
 
+//////////////////////////////////////////////////////////////////////////////
 #if TEST_CONVOLUTION
-
-
+//////////////////////////////////////////////////////////////////////////////
 
     dsp_val_t conv_output_signal[IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE];
 
     printf("Convolution test\n");
-    printf("----------------\n\n");
+    printf("----------------\n");
 
     /*Convolution*/
     dsp_convolution(conv_output_signal, 
@@ -139,9 +148,47 @@ int main(void)
     } else {
         printf("../dat/convolution/rsum_output_signal.dat created\n");
     }
-
+    printf("\n");
 #endif
 
+//////////////////////////////////////////////////////////////////////////////
+#if TEST_DFT
+//////////////////////////////////////////////////////////////////////////////
+    printf("Discrete Fourier transformation test\n");
+    printf("------------------------------------\n");
+
+    dsp_val_t dft_output_rex[INP_SIG_F32_1K_15K_SIZE / 2];
+    dsp_val_t dft_output_imx[INP_SIG_F32_1K_15K_SIZE / 2];
+
+    /*Discrete fourier transform*/
+    dsp_dft((dsp_val_t *)InputSignal_f32_1kHz_15kHz, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
+    
+
+    /*Cerate  DFT input signal*/
+    if(!create_dat_file("../dat/dft/dft_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 
+        fprintf(stderr, "An error occured in ../dat/dft/dft_input_signal.dat file creation\n");
+        return 1;
+    } else {
+        printf("../dat/dft/dft_input_signal.dat created\n");
+    }
+
+    /*Cerate  DFT output rex signal*/
+    if(!create_dat_file("../dat/dft/dft_output_rex.dat", dft_output_rex, INP_SIG_F32_1K_15K_SIZE / 2)) { 
+        fprintf(stderr, "An error occured in ../dat/dft/dft_output_rex.dat file creation\n");
+        return 1;
+    } else {
+        printf("../dat/dft/dft_output_rex.dat created\n");
+    }
+
+    /*Cerate  DFT output imx signal*/
+    if(!create_dat_file("../dat/dft/dft_output_imx.dat", dft_output_imx, INP_SIG_F32_1K_15K_SIZE / 2)) { 
+        fprintf(stderr, "An error occured in ../dat/dft/dft_output_imx.dat file creation\n");
+        return 1;
+    } else {
+        printf("../dat/dft/dft_output_imx.dat created\n");
+    }
+
+#endif
 
     return 0;
 }
