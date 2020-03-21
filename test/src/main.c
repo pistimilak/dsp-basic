@@ -159,6 +159,8 @@ int main(void)
 
     dsp_val_t dft_output_rex[INP_SIG_F32_1K_15K_SIZE / 2];
     dsp_val_t dft_output_imx[INP_SIG_F32_1K_15K_SIZE / 2];
+    
+    dsp_val_t idft_output_signal[INP_SIG_F32_1K_15K_SIZE];
 
     /*Discrete fourier transform*/
     dsp_dft((dsp_val_t *)InputSignal_f32_1kHz_15kHz, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
@@ -186,6 +188,18 @@ int main(void)
         return 1;
     } else {
         printf("../dat/dft/dft_output_imx.dat created\n");
+    }
+
+    /*Regenerate the original signal with IDFT*/
+    dsp_idft(idft_output_signal, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
+
+
+    /*Cerate  DFT input signal*/
+    if(!create_dat_file("../dat/dft/idft_output_signal.dat", idft_output_signal, INP_SIG_F32_1K_15K_SIZE)) { 
+        fprintf(stderr, "An error occured in ../dat/dft/idft_output_signal.dat file creation\n");
+        return 1;
+    } else {
+        printf("../dat/dft/idft_output_signal.dat created\n");
     }
 
 #endif

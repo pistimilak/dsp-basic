@@ -14,3 +14,5 @@ set origin 0,0
 plot 'dft_output_rex.dat' with lines lc rgb 'green'
 set origin 0.5,0
 plot 'dft_output_imx.dat' with lines lc rgb 'green'
+set origin 0.5,0.5
+plot 'idft_output_signal.dat' with lines lc rgb 'red'
