@@ -23,6 +23,7 @@
 /* Test cases */
 #define TEST_SIG_STATISTIC      1
 #define TEST_CONVOLUTION        1
+#define TEST_RUNING_SUM         1
 
 int create_dat_file(const char *fname, const dsp_val_t *data_array, const dsp_size_t size);
 
@@ -80,17 +81,18 @@ int main(void)
 
 
 
-    dsp_val_t output_signal[IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE];
+    dsp_val_t conv_output_signal[IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE];
 
     printf("Convolution test\n");
     printf("----------------\n\n");
 
-    dsp_convolution(output_signal, 
+    /*Convolution*/
+    dsp_convolution(conv_output_signal, 
                     (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, 
                     (dsp_val_t *)Impulse_response, IMPULSE_RESP_SIZE);
 
     
-
+    /*Create convolution input signal dat file*/
     if(!create_dat_file("../dat/convolution/conv_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 
         fprintf(stderr, "An error occured in ../dat/convolution/conv_input_signal.dat file creation\n");
         return 1;
@@ -98,6 +100,8 @@ int main(void)
         printf("../dat/convolution/conv_input_signal.dat created\n");
     }
 
+
+    /*Create convolution impulse response dat file*/
     if(!create_dat_file("../dat/convolution/conv_impulse_response.dat", (dsp_val_t *)Impulse_response, IMPULSE_RESP_SIZE)){ 
         fprintf(stderr, "An error occured in ../dat/convolution/conv_impulse_response.dat file creation\n");
         return 1;
@@ -105,14 +109,39 @@ int main(void)
         printf("../dat/convolution/conv_impulse_response.dat created\n");
     }
 
-    if(!create_dat_file("../dat/convolution/conv_output_signal.dat", (dsp_val_t *)output_signal, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE)) {
+
+    /*Create convolution output signal */
+    if(!create_dat_file("../dat/convolution/conv_output_signal.dat", (dsp_val_t *)conv_output_signal, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE)) {
         fprintf(stderr, "An error occured in ../dat/convolution/conv_output_signal.dat file creation\n");
         return 1;
     } else {
         printf("../dat/convolution/conv_output_signal.dat created\n");
     }
 
+
+    dsp_val_t running_sum_ouptut_signal[INP_SIG_F32_1K_15K_SIZE];
+
+    /*Running sum algorithm*/
+    dsp_running_sum(running_sum_ouptut_signal, InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
+
+    /*Cerate runing sum input signal*/
+    if(!create_dat_file("../dat/convolution/rsum_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 
+        fprintf(stderr, "An error occured in ../dat/convolution/rsum_input_signal.dat file creation\n");
+        return 1;
+    } else {
+        printf("../dat/convolution/rsum_input_signal.dat created\n");
+    }
+
+    /*Create running sum output signal*/
+    if(!create_dat_file("../dat/convolution/rsum_output_signal.dat", running_sum_ouptut_signal, INP_SIG_F32_1K_15K_SIZE)){ 
+        fprintf(stderr, "An error occured in ../dat/convolution/rsum_output_signal.dat file creation\n");
+        return 1;
+    } else {
+        printf("../dat/convolution/rsum_output_signal.dat created\n");
+    }
+
 #endif
+
 
     return 0;
 }
