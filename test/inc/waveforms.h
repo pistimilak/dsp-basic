@@ -19,7 +19,7 @@
  */
 #define INP_SIG_F32_1K_15K_SIZE         320
 #define IMPULSE_RESP_SIZE               29
-
+#define ECG_SIGNAL_SIZE                 640
 /**
  * @brief Input signal with 1kHz and 15kHz sine components
  * 
@@ -33,5 +33,11 @@ extern const double InputSignal_f32_1kHz_15kHz[INP_SIG_F32_1K_15K_SIZE];
  */
 extern const double  Impulse_response[IMPULSE_RESP_SIZE];
 
+
+/**
+ * @brief ECG signal
+ * 
+ */
+extern const double ECG_signal[ECG_SIGNAL_SIZE];
 
 #endif

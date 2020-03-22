@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccjPlzZD.s 			page 1
+GAS LISTING /tmp/ccqHBBEW.s 			page 1
 
 
    1              		.file	"dsp_dft.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
   47      0000
   48 005c E9220100 		jmp	.L4
   48      00
-GAS LISTING /tmp/ccjPlzZD.s 			page 2
+GAS LISTING /tmp/ccqHBBEW.s 			page 2
 
 
   49              	.L5:
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
   90      00
   91 00fe F20F5944 		mulsd	8(%rsp), %xmm0
   91      2408
-GAS LISTING /tmp/ccjPlzZD.s 			page 3
+GAS LISTING /tmp/ccqHBBEW.s 			page 3
 
 
   92 0104 48036C24 		addq	24(%rsp), %rbp
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  130 0191 4883C438 		addq	$56, %rsp
  131              		.cfi_def_cfa_offset 56
  132 0195 5B       		popq	%rbx
-GAS LISTING /tmp/ccjPlzZD.s 			page 4
+GAS LISTING /tmp/ccqHBBEW.s 			page 4
 
 
  133              		.cfi_def_cfa_offset 48
@@ -238,7 +238,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  185 0041 7830     		js	.L18
  186 0043 660FEFFF 		pxor	%xmm7, %xmm7
  187 0047 F2480F2A 		cvtsi2sdq	%rcx, %xmm7
-GAS LISTING /tmp/ccjPlzZD.s 			page 5
+GAS LISTING /tmp/ccqHBBEW.s 			page 5
 
 
  187      F9
@@ -298,7 +298,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  228      00000000 
  229 00e8 4883C001 		addq	$1, %rax
  230              	.L22:
-GAS LISTING /tmp/ccjPlzZD.s 			page 6
+GAS LISTING /tmp/ccqHBBEW.s 			page 6
 
 
  231 00ec 4C39F0   		cmpq	%r14, %rax
@@ -358,7 +358,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  268      00
  269 0181 F20F5904 		mulsd	(%rsp), %xmm0
  269      24
-GAS LISTING /tmp/ccjPlzZD.s 			page 7
+GAS LISTING /tmp/ccqHBBEW.s 			page 7
 
 
  270 0186 F20F5845 		addsd	0(%rbp), %xmm0
@@ -418,7 +418,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  311 01ff 415F     		popq	%r15
  312              		.cfi_def_cfa_offset 8
  313 0201 C3       		ret
-GAS LISTING /tmp/ccjPlzZD.s 			page 8
+GAS LISTING /tmp/ccqHBBEW.s 			page 8
 
 
  314              		.cfi_endproc
@@ -478,7 +478,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  360 005f E8000000 		call	sqrt@PLT
  360      00
  361 0064 F20F1103 		movsd	%xmm0, (%rbx)
-GAS LISTING /tmp/ccjPlzZD.s 			page 9
+GAS LISTING /tmp/ccqHBBEW.s 			page 9
 
 
  362 0068 4883C501 		addq	$1, %rbp
@@ -538,7 +538,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  414      10
  415 0025 41BC0000 		movl	$0, %r12d
  415      0000
-GAS LISTING /tmp/ccjPlzZD.s 			page 10
+GAS LISTING /tmp/ccqHBBEW.s 			page 10
 
 
  416 002b EB6D     		jmp	.L40
@@ -598,7 +598,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  449      00
  450 00c8 F20F1144 		movsd	%xmm0, 8(%rsp)
  450      2408
-GAS LISTING /tmp/ccjPlzZD.s 			page 11
+GAS LISTING /tmp/ccqHBBEW.s 			page 11
 
 
  451 00ce 488B4424 		movq	32(%rsp), %rax
@@ -658,7 +658,7 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  485 0164 5D       		popq	%rbp
  486              		.cfi_def_cfa_offset 40
  487 0165 415C     		popq	%r12
-GAS LISTING /tmp/ccjPlzZD.s 			page 12
+GAS LISTING /tmp/ccqHBBEW.s 			page 12
 
 
  488              		.cfi_def_cfa_offset 32
@@ -714,24 +714,24 @@ GAS LISTING /tmp/ccjPlzZD.s 			page 1
  539 003c FB210940 		.long	1074340347
  540              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
  541              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccjPlzZD.s 			page 13
+GAS LISTING /tmp/ccqHBBEW.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 dsp_dft.c
-     /tmp/ccjPlzZD.s:6      .text.dsp_dft:0000000000000000 dsp_dft
-     /tmp/ccjPlzZD.s:151    .text.dsp_idft:0000000000000000 dsp_idft
-     /tmp/ccjPlzZD.s:320    .text.dsp_dft_magnitude:0000000000000000 dsp_dft_magnitude
-     /tmp/ccjPlzZD.s:387    .text.dsp_rect2polar:0000000000000000 dsp_rect2polar
-     /tmp/ccjPlzZD.s:505    .rodata.cst8:0000000000000008 .LC1
-     /tmp/ccjPlzZD.s:509    .rodata.cst8:0000000000000010 .LC2
-     /tmp/ccjPlzZD.s:513    .rodata.cst8:0000000000000018 .LC3
-     /tmp/ccjPlzZD.s:518    .rodata.cst16:0000000000000000 .LC4
-     /tmp/ccjPlzZD.s:525    .rodata.cst8:0000000000000020 .LC5
-     /tmp/ccjPlzZD.s:529    .rodata.cst8:0000000000000028 .LC6
-     /tmp/ccjPlzZD.s:533    .rodata.cst8:0000000000000030 .LC7
-     /tmp/ccjPlzZD.s:537    .rodata.cst8:0000000000000038 .LC8
-     /tmp/ccjPlzZD.s:501    .rodata.cst8:0000000000000000 .LC0
+     /tmp/ccqHBBEW.s:6      .text.dsp_dft:0000000000000000 dsp_dft
+     /tmp/ccqHBBEW.s:151    .text.dsp_idft:0000000000000000 dsp_idft
+     /tmp/ccqHBBEW.s:320    .text.dsp_dft_magnitude:0000000000000000 dsp_dft_magnitude
+     /tmp/ccqHBBEW.s:387    .text.dsp_rect2polar:0000000000000000 dsp_rect2polar
+     /tmp/ccqHBBEW.s:505    .rodata.cst8:0000000000000008 .LC1
+     /tmp/ccqHBBEW.s:509    .rodata.cst8:0000000000000010 .LC2
+     /tmp/ccqHBBEW.s:513    .rodata.cst8:0000000000000018 .LC3
+     /tmp/ccqHBBEW.s:518    .rodata.cst16:0000000000000000 .LC4
+     /tmp/ccqHBBEW.s:525    .rodata.cst8:0000000000000020 .LC5
+     /tmp/ccqHBBEW.s:529    .rodata.cst8:0000000000000028 .LC6
+     /tmp/ccqHBBEW.s:533    .rodata.cst8:0000000000000030 .LC7
+     /tmp/ccqHBBEW.s:537    .rodata.cst8:0000000000000038 .LC8
+     /tmp/ccqHBBEW.s:501    .rodata.cst8:0000000000000000 .LC0
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

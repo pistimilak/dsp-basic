@@ -26,6 +26,10 @@
 #define TEST_CONVOLUTION        1
 #define TEST_DFT                1
 
+#define MEM_SLOTS_NUM           6
+
+
+static inline void check_mem_alloc(void *mem);
 int create_dat_file(const char *fname, const dsp_val_t *data_array, const dsp_size_t size);
 
 
@@ -33,7 +37,7 @@ int main(void)
 {
 
     size_t full_path_len;
-    
+
     /*Getting full path of executable*/
     char *full_path = (char *) malloc(STR_BUFF_SIZE);
     memset(full_path, 0, STR_BUFF_SIZE);
@@ -90,14 +94,16 @@ int main(void)
 #if TEST_CONVOLUTION
 //////////////////////////////////////////////////////////////////////////////
 
-    dsp_val_t conv_output_signal[IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE];
+    dsp_val_t *conv_output_signal;
 
     printf("Convolution test\n");
     printf("----------------\n");
 
+    conv_output_signal = (dsp_val_t *)calloc((IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE), sizeof(dsp_val_t));
+    check_mem_alloc(conv_output_signal);
+
     /*Convolution*/
-    dsp_convolution(conv_output_signal, 
-                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, 
+    dsp_convolution(conv_output_signal, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, 
                     (dsp_val_t *)Impulse_response, IMPULSE_RESP_SIZE);
 
     
@@ -120,15 +126,21 @@ int main(void)
 
 
     /*Create convolution output signal */
-    if(!create_dat_file("../dat/convolution/conv_output_signal.dat", (dsp_val_t *)conv_output_signal, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE)) {
+    if(!create_dat_file("../dat/convolution/conv_output_signal.dat", conv_output_signal, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE)) {
         fprintf(stderr, "An error occured in ../dat/convolution/conv_output_signal.dat file creation\n");
         return 1;
     } else {
         printf("../dat/convolution/conv_output_signal.dat created\n");
     }
 
+    free(conv_output_signal);
 
-    dsp_val_t running_sum_ouptut_signal[INP_SIG_F32_1K_15K_SIZE];
+    // dsp_val_t running_sum_ouptut_signal[INP_SIG_F32_1K_15K_SIZE];
+    dsp_val_t *running_sum_ouptut_signal = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
+
+    // running_sum_ouptut_signal = mem_slot0 = (dsp_val_t *) realloc(mem_slot0, sizeof(dsp_val_t) * INP_SIG_F32_1K_15K_SIZE);
+
+    check_mem_alloc(running_sum_ouptut_signal);
 
     /*Running sum algorithm*/
     dsp_running_sum(running_sum_ouptut_signal, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
@@ -142,13 +154,15 @@ int main(void)
     }
 
     /*Create running sum output signal*/
-    if(!create_dat_file("../dat/convolution/rsum_output_signal.dat", running_sum_ouptut_signal, INP_SIG_F32_1K_15K_SIZE)){ 
+    if(!create_dat_file("../dat/convolution/rsum_output_signal.dat", (dsp_val_t *)running_sum_ouptut_signal, INP_SIG_F32_1K_15K_SIZE)){ 
         fprintf(stderr, "An error occured in ../dat/convolution/rsum_output_signal.dat file creation\n");
         return 1;
     } else {
         printf("../dat/convolution/rsum_output_signal.dat created\n");
     }
     printf("\n");
+
+    free(running_sum_ouptut_signal);
 #endif
 
 //////////////////////////////////////////////////////////////////////////////
@@ -157,10 +171,18 @@ int main(void)
     printf("Discrete Fourier transformation test\n");
     printf("------------------------------------\n");
 
-    dsp_val_t dft_output_rex[INP_SIG_F32_1K_15K_SIZE / 2];
-    dsp_val_t dft_output_imx[INP_SIG_F32_1K_15K_SIZE / 2];
-    
-    dsp_val_t idft_output_signal[INP_SIG_F32_1K_15K_SIZE];
+    /*dft_output_rex*/
+    dsp_val_t *dft_output_rex = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_output_rex);
+
+    /*dft_output_imx*/
+    dsp_val_t *dft_output_imx = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_output_imx);
+
+
+    /*idft output signal*/
+    dsp_val_t *idft_output_signal = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(idft_output_signal);
 
     /*Discrete fourier transform*/
     dsp_dft((dsp_val_t *)InputSignal_f32_1kHz_15kHz, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
@@ -202,6 +224,10 @@ int main(void)
         printf("../dat/dft/idft_output_signal.dat created\n");
     }
 
+    printf("\n");
+    free(dft_output_rex);
+    free(dft_output_imx);
+    free(idft_output_signal);
 #endif
 
     return 0;
@@ -230,4 +256,12 @@ int create_dat_file(const char *fname, const dsp_val_t *data_array, const dsp_si
     fclose(fd);
     // return with the printed data
     return size;
+}
+
+static inline void check_mem_alloc(void *mem) 
+{
+    if(mem == NULL) {
+        fprintf(stderr, "Memmory allocation error!\n");
+        exit(EXIT_FAILURE);
+    }
 }
