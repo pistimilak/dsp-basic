@@ -36,7 +36,7 @@
  */
 void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, dsp_size_t input_sig_len)
 {
-    dsp_size_t i, j, k;
+    dsp_size_t i, k;
 
     // calc re and im arrays as result
     for(k = 0, *(dest_rex + k) = *(dest_imx + k) = 0; 
@@ -99,13 +99,13 @@ void dsp_idft(dsp_val_t *dest_sig, dsp_val_t *input_rex,  dsp_val_t *input_imx, 
  * @param dest_mag destination signal
  * @param rex real part array
  * @param imx imaginary part array
- * @param mag_len length of magnitude
+ * @param rex_imx_len length of magnitude, equal to rex and imx len
  */
-void dsp_dft_magnitude(dsp_val_t *dest_mag, dsp_val_t *rex, dsp_val_t *imx, dsp_size_t mag_len)
+void dsp_dft_magnitude(dsp_val_t *dest_mag, dsp_val_t *rex, dsp_val_t *imx, dsp_size_t rex_imx_len)
 {
     dsp_size_t i;
 
-    for(i = 0; i < mag_len; i++) {
+    for(i = 0; i < rex_imx_len; i++) {
         *(dest_mag + i) = sqrt( pow(*(rex + i), 2) + pow(*(imx + i), 2) );
     }
 }

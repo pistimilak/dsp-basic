@@ -165,9 +165,18 @@ int main(void)
     dsp_val_t *idft_output_signal = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
     check_mem_alloc(idft_output_signal);
 
+    /*dft_output_rex*/
+    dsp_val_t *dft_output_mag = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_output_mag);
+
     /*Discrete fourier transform*/
     dsp_dft((dsp_val_t *)InputSignal_f32_1kHz_15kHz, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
     
+
+    /*Identification of frequencies in the DFT*/
+    dsp_dft_magnitude(dft_output_mag, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE / 2);
+
+
 
     /*Cerate  DFT input signal*/
     create_dat_file(test_abs_path, "dat/dft/dft_input_signal.dat", 
@@ -181,6 +190,8 @@ int main(void)
     create_dat_file(test_abs_path, "dat/dft/dft_output_imx.dat", 
                     dft_output_imx, INP_SIG_F32_1K_15K_SIZE / 2);
 
+    
+
     /*Regenerate the original signal with IDFT*/
     dsp_idft(idft_output_signal, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
 
@@ -188,9 +199,17 @@ int main(void)
     create_dat_file(test_abs_path, "/dat/dft/idft_output_signal.dat", 
                     idft_output_signal, INP_SIG_F32_1K_15K_SIZE);
 
+
+    
+
+    /*Cerate  DFT output magniute signal*/
+    create_dat_file(test_abs_path, "dat/dft/dft_output_mag.dat", 
+                    dft_output_mag, INP_SIG_F32_1K_15K_SIZE / 2);
+
     printf("\n");
     free(dft_output_rex);
     free(dft_output_imx);
+    free(dft_output_mag);
     free(idft_output_signal);
 
     /*ECG signal*/
@@ -230,9 +249,13 @@ int main(void)
     create_dat_file(test_abs_path, "/dat/dft/idft_ecg_output_signal.dat", 
                     idft_ecg_output_signal, ECG_SIGNAL_SIZE);
 
+    printf("\n");
     free(dft_ecg_output_rex);
     free(dft_ecg_output_imx);
     free(idft_ecg_output_signal);
+
+
+
 
 #endif
 

@@ -1,4 +1,4 @@
-GAS LISTING /tmp/cc6uZFiB.s 			page 1
+GAS LISTING /tmp/ccrHHPgQ.s 			page 1
 
 
    1              		.file	"main.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
   47 000a 4989FD   		movq	%rdi, %r13
   48 000d 4989F4   		movq	%rsi, %r12
   49 0010 E8000000 		call	strlen@PLT
-GAS LISTING /tmp/cc6uZFiB.s 			page 2
+GAS LISTING /tmp/ccrHHPgQ.s 			page 2
 
 
   49      00
@@ -118,7 +118,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
   91      28256420 
   91      656C656D 
   92              		.section	.text.create_dat_file,"ax",@progbits
-GAS LISTING /tmp/cc6uZFiB.s 			page 3
+GAS LISTING /tmp/ccrHHPgQ.s 			page 3
 
 
   93              		.globl	create_dat_file
@@ -178,7 +178,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
  137 0063 488D1500 		leaq	.LC2(%rip), %rdx
  137      000000
  138 006a BE010000 		movl	$1, %esi
-GAS LISTING /tmp/cc6uZFiB.s 			page 4
+GAS LISTING /tmp/ccrHHPgQ.s 			page 4
 
 
  138      00
@@ -238,7 +238,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
  175              		.cfi_def_cfa_offset 8
  176 00ee C3       		ret
  177              		.cfi_endproc
-GAS LISTING /tmp/cc6uZFiB.s 			page 5
+GAS LISTING /tmp/ccrHHPgQ.s 			page 5
 
 
  178              	.LFE37:
@@ -298,7 +298,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
  204 00a8 4162736F 		.string	"Absolute path of test directory:\t%s\n\n"
  204      6C757465 
  204      20706174 
-GAS LISTING /tmp/cc6uZFiB.s 			page 6
+GAS LISTING /tmp/ccrHHPgQ.s 			page 6
 
 
  204      68206F66 
@@ -358,7 +358,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
  225      636F6E76 
  226 0176 0000     		.align 8
  227              	.LC22:
-GAS LISTING /tmp/cc6uZFiB.s 			page 7
+GAS LISTING /tmp/ccrHHPgQ.s 			page 7
 
 
  228 0178 6461742F 		.string	"dat/convolution/conv_impulse_response.dat"
@@ -418,7 +418,7 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
  249              	.LC30:
  250 010b 6461742F 		.string	"dat/dft/dft_output_imx.dat"
  250      6466742F 
-GAS LISTING /tmp/cc6uZFiB.s 			page 8
+GAS LISTING /tmp/ccrHHPgQ.s 			page 8
 
 
  250      6466745F 
@@ -432,649 +432,702 @@ GAS LISTING /tmp/cc6uZFiB.s 			page 1
  254      2F696466 
  254      745F6F75 
  254      74707574 
- 255              		.align 8
+ 255              		.section	.rodata.main.str1.1
  256              	.LC32:
- 257 0290 6461742F 		.string	"dat/dft/dft_ecg_input_signal.dat"
+ 257 0126 6461742F 		.string	"dat/dft/dft_output_mag.dat"
  257      6466742F 
  257      6466745F 
- 257      6563675F 
- 257      696E7075 
- 258 02b1 00000000 		.align 8
- 258      000000
- 259              	.LC33:
- 260 02b8 6461742F 		.string	"dat/dft/dft_ecg_output_rex.dat"
- 260      6466742F 
- 260      6466745F 
- 260      6563675F 
- 260      6F757470 
- 261 02d7 00       		.align 8
- 262              	.LC34:
- 263 02d8 6461742F 		.string	"dat/dft/dft_ecg_output_imx.dat"
- 263      6466742F 
- 263      6466745F 
- 263      6563675F 
- 263      6F757470 
- 264 02f7 00       		.align 8
- 265              	.LC35:
- 266 02f8 2F646174 		.string	"/dat/dft/idft_ecg_output_signal.dat"
- 266      2F646674 
- 266      2F696466 
- 266      745F6563 
- 266      675F6F75 
- 267              		.section	.text.main,"ax",@progbits
- 268              		.globl	main
- 270              	main:
- 271              	.LFB36:
- 272              		.cfi_startproc
- 273 0000 4155     		pushq	%r13
- 274              		.cfi_def_cfa_offset 16
- 275              		.cfi_offset 13, -16
- 276 0002 4154     		pushq	%r12
- 277              		.cfi_def_cfa_offset 24
- 278              		.cfi_offset 12, -24
- 279 0004 55       		pushq	%rbp
- 280              		.cfi_def_cfa_offset 32
- 281              		.cfi_offset 6, -32
- 282 0005 53       		pushq	%rbx
- 283              		.cfi_def_cfa_offset 40
- 284              		.cfi_offset 3, -40
-GAS LISTING /tmp/cc6uZFiB.s 			page 9
+ 257      6F757470 
+ 257      75745F6D 
+ 258              		.section	.rodata.main.str1.8
+ 259              		.align 8
+ 260              	.LC33:
+ 261 0290 6461742F 		.string	"dat/dft/dft_ecg_input_signal.dat"
+ 261      6466742F 
+ 261      6466745F 
+ 261      6563675F 
+ 261      696E7075 
+ 262 02b1 00000000 		.align 8
+ 262      000000
+ 263              	.LC34:
+ 264 02b8 6461742F 		.string	"dat/dft/dft_ecg_output_rex.dat"
+ 264      6466742F 
+ 264      6466745F 
+ 264      6563675F 
+ 264      6F757470 
+ 265 02d7 00       		.align 8
+ 266              	.LC35:
+ 267 02d8 6461742F 		.string	"dat/dft/dft_ecg_output_imx.dat"
+ 267      6466742F 
+ 267      6466745F 
+ 267      6563675F 
+ 267      6F757470 
+ 268 02f7 00       		.align 8
+ 269              	.LC36:
+ 270 02f8 2F646174 		.string	"/dat/dft/idft_ecg_output_signal.dat"
+ 270      2F646674 
+ 270      2F696466 
+ 270      745F6563 
+ 270      675F6F75 
+ 271              		.section	.text.main,"ax",@progbits
+ 272              		.globl	main
+ 274              	main:
+ 275              	.LFB36:
+ 276              		.cfi_startproc
+ 277 0000 4156     		pushq	%r14
+ 278              		.cfi_def_cfa_offset 16
+ 279              		.cfi_offset 14, -16
+ 280 0002 4155     		pushq	%r13
+GAS LISTING /tmp/ccrHHPgQ.s 			page 9
 
 
- 285 0006 4883EC28 		subq	$40, %rsp
- 286              		.cfi_def_cfa_offset 80
- 287 000a 488D3500 		leaq	.LC5(%rip), %rsi
- 287      000000
- 288 0011 BF010000 		movl	$1, %edi
- 288      00
- 289 0016 B8000000 		movl	$0, %eax
- 289      00
- 290 001b E8000000 		call	__printf_chk@PLT
- 290      00
- 291 0020 488D3500 		leaq	.LC6(%rip), %rsi
- 291      000000
- 292 0027 BF010000 		movl	$1, %edi
- 292      00
- 293 002c B8000000 		movl	$0, %eax
- 293      00
- 294 0031 E8000000 		call	__printf_chk@PLT
- 294      00
- 295 0036 488D3500 		leaq	.LC7(%rip), %rsi
- 295      000000
- 296 003d BF010000 		movl	$1, %edi
+ 281              		.cfi_def_cfa_offset 24
+ 282              		.cfi_offset 13, -24
+ 283 0004 4154     		pushq	%r12
+ 284              		.cfi_def_cfa_offset 32
+ 285              		.cfi_offset 12, -32
+ 286 0006 55       		pushq	%rbp
+ 287              		.cfi_def_cfa_offset 40
+ 288              		.cfi_offset 6, -40
+ 289 0007 53       		pushq	%rbx
+ 290              		.cfi_def_cfa_offset 48
+ 291              		.cfi_offset 3, -48
+ 292 0008 4883EC20 		subq	$32, %rsp
+ 293              		.cfi_def_cfa_offset 80
+ 294 000c 488D3500 		leaq	.LC5(%rip), %rsi
+ 294      000000
+ 295 0013 BF010000 		movl	$1, %edi
+ 295      00
+ 296 0018 B8000000 		movl	$0, %eax
  296      00
- 297 0042 B8000000 		movl	$0, %eax
+ 297 001d E8000000 		call	__printf_chk@PLT
  297      00
- 298 0047 E8000000 		call	__printf_chk@PLT
- 298      00
- 299 004c 488D3500 		leaq	.LC8(%rip), %rsi
- 299      000000
- 300 0053 BF010000 		movl	$1, %edi
+ 298 0022 488D3500 		leaq	.LC6(%rip), %rsi
+ 298      000000
+ 299 0029 BF010000 		movl	$1, %edi
+ 299      00
+ 300 002e B8000000 		movl	$0, %eax
  300      00
- 301 0058 B8000000 		movl	$0, %eax
+ 301 0033 E8000000 		call	__printf_chk@PLT
  301      00
- 302 005d E8000000 		call	__printf_chk@PLT
- 302      00
- 303 0062 488D3500 		leaq	.LC9(%rip), %rsi
- 303      000000
- 304 0069 BF010000 		movl	$1, %edi
+ 302 0038 488D3500 		leaq	.LC7(%rip), %rsi
+ 302      000000
+ 303 003f BF010000 		movl	$1, %edi
+ 303      00
+ 304 0044 B8000000 		movl	$0, %eax
  304      00
- 305 006e B8000000 		movl	$0, %eax
+ 305 0049 E8000000 		call	__printf_chk@PLT
  305      00
- 306 0073 E8000000 		call	__printf_chk@PLT
- 306      00
- 307 0078 488D3500 		leaq	.LC10(%rip), %rsi
- 307      000000
- 308 007f BF010000 		movl	$1, %edi
+ 306 004e 488D3500 		leaq	.LC8(%rip), %rsi
+ 306      000000
+ 307 0055 BF010000 		movl	$1, %edi
+ 307      00
+ 308 005a B8000000 		movl	$0, %eax
  308      00
- 309 0084 B8000000 		movl	$0, %eax
+ 309 005f E8000000 		call	__printf_chk@PLT
  309      00
- 310 0089 E8000000 		call	__printf_chk@PLT
- 310      00
- 311 008e BFE80300 		movl	$1000, %edi
+ 310 0064 488D3500 		leaq	.LC9(%rip), %rsi
+ 310      000000
+ 311 006b BF010000 		movl	$1, %edi
  311      00
- 312 0093 E8000000 		call	malloc@PLT
+ 312 0070 B8000000 		movl	$0, %eax
  312      00
- 313 0098 4989C4   		movq	%rax, %r12
- 314 009b 48C70000 		movq	$0, (%rax)
+ 313 0075 E8000000 		call	__printf_chk@PLT
+ 313      00
+ 314 007a 488D3500 		leaq	.LC10(%rip), %rsi
  314      000000
-GAS LISTING /tmp/cc6uZFiB.s 			page 10
+ 315 0081 BF010000 		movl	$1, %edi
+ 315      00
+GAS LISTING /tmp/ccrHHPgQ.s 			page 10
 
 
- 315 00a2 48C780E0 		movq	$0, 992(%rax)
- 315      03000000 
- 315      000000
- 316 00ad 488D7808 		leaq	8(%rax), %rdi
- 317 00b1 4883E7F8 		andq	$-8, %rdi
- 318 00b5 4889C1   		movq	%rax, %rcx
- 319 00b8 4829F9   		subq	%rdi, %rcx
- 320 00bb 81C1E803 		addl	$1000, %ecx
- 320      0000
- 321 00c1 C1E903   		shrl	$3, %ecx
- 322 00c4 89C9     		movl	%ecx, %ecx
- 323 00c6 B8000000 		movl	$0, %eax
- 323      00
- 324 00cb F348AB   		rep stosq
- 325 00ce BAE80300 		movl	$1000, %edx
- 325      00
- 326 00d3 4C89E6   		movq	%r12, %rsi
- 327 00d6 488D3D00 		leaq	.LC11(%rip), %rdi
- 327      000000
- 328 00dd E8000000 		call	readlink@PLT
- 328      00
- 329 00e2 4863D8   		movslq	%eax, %rbx
- 330 00e5 4889D9   		movq	%rbx, %rcx
- 331 00e8 4C89E2   		movq	%r12, %rdx
- 332 00eb 488D3500 		leaq	.LC12(%rip), %rsi
- 332      000000
- 333 00f2 BF010000 		movl	$1, %edi
- 333      00
- 334 00f7 B8000000 		movl	$0, %eax
- 334      00
- 335 00fc E8000000 		call	__printf_chk@PLT
+ 316 0086 B8000000 		movl	$0, %eax
+ 316      00
+ 317 008b E8000000 		call	__printf_chk@PLT
+ 317      00
+ 318 0090 BFE80300 		movl	$1000, %edi
+ 318      00
+ 319 0095 E8000000 		call	malloc@PLT
+ 319      00
+ 320 009a 4989C4   		movq	%rax, %r12
+ 321 009d 48C70000 		movq	$0, (%rax)
+ 321      000000
+ 322 00a4 48C780E0 		movq	$0, 992(%rax)
+ 322      03000000 
+ 322      000000
+ 323 00af 488D7808 		leaq	8(%rax), %rdi
+ 324 00b3 4883E7F8 		andq	$-8, %rdi
+ 325 00b7 4889C1   		movq	%rax, %rcx
+ 326 00ba 4829F9   		subq	%rdi, %rcx
+ 327 00bd 81C1E803 		addl	$1000, %ecx
+ 327      0000
+ 328 00c3 C1E903   		shrl	$3, %ecx
+ 329 00c6 89C9     		movl	%ecx, %ecx
+ 330 00c8 B8000000 		movl	$0, %eax
+ 330      00
+ 331 00cd F348AB   		rep stosq
+ 332 00d0 BAE80300 		movl	$1000, %edx
+ 332      00
+ 333 00d5 4C89E6   		movq	%r12, %rsi
+ 334 00d8 488D3D00 		leaq	.LC11(%rip), %rdi
+ 334      000000
+ 335 00df E8000000 		call	readlink@PLT
  335      00
- 336 0101 488D7B01 		leaq	1(%rbx), %rdi
- 337 0105 E8000000 		call	malloc@PLT
- 337      00
- 338 010a 4889C5   		movq	%rax, %rbp
- 339 010d 4889DA   		movq	%rbx, %rdx
- 340 0110 4C89E6   		movq	%r12, %rsi
- 341 0113 4889C7   		movq	%rax, %rdi
- 342 0116 E8000000 		call	memcpy@PLT
+ 336 00e4 4863D8   		movslq	%eax, %rbx
+ 337 00e7 4889D9   		movq	%rbx, %rcx
+ 338 00ea 4C89E2   		movq	%r12, %rdx
+ 339 00ed 488D3500 		leaq	.LC12(%rip), %rsi
+ 339      000000
+ 340 00f4 BF010000 		movl	$1, %edi
+ 340      00
+ 341 00f9 B8000000 		movl	$0, %eax
+ 341      00
+ 342 00fe E8000000 		call	__printf_chk@PLT
  342      00
- 343 011b 488D441D 		leaq	0(%rbp,%rbx), %rax
- 343      00
- 344 0120 C60000   		movb	$0, (%rax)
- 345 0123 BA000000 		movl	$0, %edx
- 345      00
- 346 0128 EB15     		jmp	.L18
- 347              	.L19:
- 348 012a 4883E801 		subq	$1, %rax
- 349              	.L21:
- 350 012e 80382F   		cmpb	$47, (%rax)
- 351 0131 75F7     		jne	.L19
- 352 0133 83C201   		addl	$1, %edx
- 353 0136 83FA01   		cmpl	$1, %edx
- 354 0139 7F04     		jg	.L18
- 355 013b 4883E801 		subq	$1, %rax
- 356              	.L18:
-GAS LISTING /tmp/cc6uZFiB.s 			page 11
+ 343 0103 488D7B01 		leaq	1(%rbx), %rdi
+ 344 0107 E8000000 		call	malloc@PLT
+ 344      00
+ 345 010c 4889C5   		movq	%rax, %rbp
+ 346 010f 4889DA   		movq	%rbx, %rdx
+ 347 0112 4C89E6   		movq	%r12, %rsi
+ 348 0115 4889C7   		movq	%rax, %rdi
+ 349 0118 E8000000 		call	memcpy@PLT
+ 349      00
+ 350 011d 488D441D 		leaq	0(%rbp,%rbx), %rax
+ 350      00
+ 351 0122 C60000   		movb	$0, (%rax)
+ 352 0125 BA000000 		movl	$0, %edx
+ 352      00
+GAS LISTING /tmp/ccrHHPgQ.s 			page 11
 
 
- 357 013f 83FA01   		cmpl	$1, %edx
- 358 0142 7EEA     		jle	.L21
- 359 0144 C60000   		movb	$0, (%rax)
- 360 0147 4C89E7   		movq	%r12, %rdi
- 361 014a E8000000 		call	free@PLT
- 361      00
- 362 014f 4889EF   		movq	%rbp, %rdi
- 363 0152 E8000000 		call	strlen@PLT
- 363      00
- 364 0157 4889C1   		movq	%rax, %rcx
- 365 015a 4889EA   		movq	%rbp, %rdx
- 366 015d 488D3500 		leaq	.LC13(%rip), %rsi
- 366      000000
- 367 0164 BF010000 		movl	$1, %edi
- 367      00
- 368 0169 B8000000 		movl	$0, %eax
+ 353 012a EB15     		jmp	.L18
+ 354              	.L19:
+ 355 012c 4883E801 		subq	$1, %rax
+ 356              	.L21:
+ 357 0130 80382F   		cmpb	$47, (%rax)
+ 358 0133 75F7     		jne	.L19
+ 359 0135 83C201   		addl	$1, %edx
+ 360 0138 83FA01   		cmpl	$1, %edx
+ 361 013b 7F04     		jg	.L18
+ 362 013d 4883E801 		subq	$1, %rax
+ 363              	.L18:
+ 364 0141 83FA01   		cmpl	$1, %edx
+ 365 0144 7EEA     		jle	.L21
+ 366 0146 C60000   		movb	$0, (%rax)
+ 367 0149 4C89E7   		movq	%r12, %rdi
+ 368 014c E8000000 		call	free@PLT
  368      00
- 369 016e E8000000 		call	__printf_chk@PLT
- 369      00
- 370 0173 BE400100 		movl	$320, %esi
+ 369 0151 4889EF   		movq	%rbp, %rdi
+ 370 0154 E8000000 		call	strlen@PLT
  370      00
- 371 0178 488D3D00 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdi
- 371      000000
- 372 017f E8000000 		call	dsp_sig_mean@PLT
- 372      00
- 373 0184 BE400100 		movl	$320, %esi
- 373      00
- 374 0189 F20F1144 		movsd	%xmm0, 8(%rsp)
- 374      2408
- 375 018f 488D3D00 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdi
- 375      000000
- 376 0196 E8000000 		call	dsp_sig_variance@PLT
+ 371 0159 4889C1   		movq	%rax, %rcx
+ 372 015c 4889EA   		movq	%rbp, %rdx
+ 373 015f 488D3500 		leaq	.LC13(%rip), %rsi
+ 373      000000
+ 374 0166 BF010000 		movl	$1, %edi
+ 374      00
+ 375 016b B8000000 		movl	$0, %eax
+ 375      00
+ 376 0170 E8000000 		call	__printf_chk@PLT
  376      00
- 377 019b F20F1144 		movsd	%xmm0, 16(%rsp)
- 377      2410
- 378 01a1 E8000000 		call	dsp_sig_std_dev@PLT
- 378      00
- 379 01a6 F20F1144 		movsd	%xmm0, 24(%rsp)
- 379      2418
- 380 01ac 488D3500 		leaq	.LC14(%rip), %rsi
- 380      000000
- 381 01b3 BF010000 		movl	$1, %edi
- 381      00
- 382 01b8 B8000000 		movl	$0, %eax
- 382      00
- 383 01bd E8000000 		call	__printf_chk@PLT
+ 377 0175 BE400100 		movl	$320, %esi
+ 377      00
+ 378 017a 488D3D00 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdi
+ 378      000000
+ 379 0181 E8000000 		call	dsp_sig_mean@PLT
+ 379      00
+ 380 0186 BE400100 		movl	$320, %esi
+ 380      00
+ 381 018b F20F1144 		movsd	%xmm0, 8(%rsp)
+ 381      2408
+ 382 0191 488D3D00 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdi
+ 382      000000
+ 383 0198 E8000000 		call	dsp_sig_variance@PLT
  383      00
- 384 01c2 488D3500 		leaq	.LC15(%rip), %rsi
- 384      000000
- 385 01c9 BF010000 		movl	$1, %edi
+ 384 019d F20F1144 		movsd	%xmm0, 16(%rsp)
+ 384      2410
+ 385 01a3 E8000000 		call	dsp_sig_std_dev@PLT
  385      00
- 386 01ce B8000000 		movl	$0, %eax
- 386      00
- 387 01d3 E8000000 		call	__printf_chk@PLT
- 387      00
- 388 01d8 F20F1044 		movsd	8(%rsp), %xmm0
- 388      2408
-GAS LISTING /tmp/cc6uZFiB.s 			page 12
+ 386 01a8 F20F1144 		movsd	%xmm0, 24(%rsp)
+ 386      2418
+ 387 01ae 488D3500 		leaq	.LC14(%rip), %rsi
+ 387      000000
+ 388 01b5 BF010000 		movl	$1, %edi
+ 388      00
+ 389 01ba B8000000 		movl	$0, %eax
+ 389      00
+ 390 01bf E8000000 		call	__printf_chk@PLT
+GAS LISTING /tmp/ccrHHPgQ.s 			page 12
 
 
- 389 01de 488D3500 		leaq	.LC16(%rip), %rsi
- 389      000000
- 390 01e5 BF010000 		movl	$1, %edi
  390      00
- 391 01ea B8010000 		movl	$1, %eax
- 391      00
- 392 01ef E8000000 		call	__printf_chk@PLT
+ 391 01c4 488D3500 		leaq	.LC15(%rip), %rsi
+ 391      000000
+ 392 01cb BF010000 		movl	$1, %edi
  392      00
- 393 01f4 F20F1044 		movsd	16(%rsp), %xmm0
- 393      2410
- 394 01fa 488D3500 		leaq	.LC17(%rip), %rsi
- 394      000000
- 395 0201 BF010000 		movl	$1, %edi
- 395      00
- 396 0206 B8010000 		movl	$1, %eax
- 396      00
- 397 020b E8000000 		call	__printf_chk@PLT
+ 393 01d0 B8000000 		movl	$0, %eax
+ 393      00
+ 394 01d5 E8000000 		call	__printf_chk@PLT
+ 394      00
+ 395 01da F20F1044 		movsd	8(%rsp), %xmm0
+ 395      2408
+ 396 01e0 488D3500 		leaq	.LC16(%rip), %rsi
+ 396      000000
+ 397 01e7 BF010000 		movl	$1, %edi
  397      00
- 398 0210 F20F1044 		movsd	24(%rsp), %xmm0
- 398      2418
- 399 0216 488D3500 		leaq	.LC18(%rip), %rsi
- 399      000000
- 400 021d BF010000 		movl	$1, %edi
- 400      00
- 401 0222 B8010000 		movl	$1, %eax
- 401      00
- 402 0227 E8000000 		call	__printf_chk@PLT
+ 398 01ec B8010000 		movl	$1, %eax
+ 398      00
+ 399 01f1 E8000000 		call	__printf_chk@PLT
+ 399      00
+ 400 01f6 F20F1044 		movsd	16(%rsp), %xmm0
+ 400      2410
+ 401 01fc 488D3500 		leaq	.LC17(%rip), %rsi
+ 401      000000
+ 402 0203 BF010000 		movl	$1, %edi
  402      00
- 403 022c 488D3500 		leaq	.LC19(%rip), %rsi
- 403      000000
- 404 0233 BF010000 		movl	$1, %edi
+ 403 0208 B8010000 		movl	$1, %eax
+ 403      00
+ 404 020d E8000000 		call	__printf_chk@PLT
  404      00
- 405 0238 B8000000 		movl	$0, %eax
- 405      00
- 406 023d E8000000 		call	__printf_chk@PLT
- 406      00
- 407 0242 488D3500 		leaq	.LC20(%rip), %rsi
- 407      000000
- 408 0249 BF010000 		movl	$1, %edi
+ 405 0212 F20F1044 		movsd	24(%rsp), %xmm0
+ 405      2418
+ 406 0218 488D3500 		leaq	.LC18(%rip), %rsi
+ 406      000000
+ 407 021f BF010000 		movl	$1, %edi
+ 407      00
+ 408 0224 B8010000 		movl	$1, %eax
  408      00
- 409 024e B8000000 		movl	$0, %eax
+ 409 0229 E8000000 		call	__printf_chk@PLT
  409      00
- 410 0253 E8000000 		call	__printf_chk@PLT
- 410      00
- 411 0258 BE080000 		movl	$8, %esi
+ 410 022e 488D3500 		leaq	.LC19(%rip), %rsi
+ 410      000000
+ 411 0235 BF010000 		movl	$1, %edi
  411      00
- 412 025d BF5D0100 		movl	$349, %edi
+ 412 023a B8000000 		movl	$0, %eax
  412      00
- 413 0262 E8000000 		call	calloc@PLT
+ 413 023f E8000000 		call	__printf_chk@PLT
  413      00
- 414 0267 4889C3   		movq	%rax, %rbx
- 415 026a 4889C7   		movq	%rax, %rdi
- 416 026d E8000000 		call	check_mem_alloc
+ 414 0244 488D3500 		leaq	.LC20(%rip), %rsi
+ 414      000000
+ 415 024b BF010000 		movl	$1, %edi
+ 415      00
+ 416 0250 B8000000 		movl	$0, %eax
  416      00
- 417 0272 41B81D00 		movl	$29, %r8d
- 417      0000
- 418 0278 488D0D00 		leaq	Impulse_response(%rip), %rcx
-GAS LISTING /tmp/cc6uZFiB.s 			page 13
+ 417 0255 E8000000 		call	__printf_chk@PLT
+ 417      00
+ 418 025a BE080000 		movl	$8, %esi
+ 418      00
+GAS LISTING /tmp/ccrHHPgQ.s 			page 13
 
 
- 418      000000
- 419 027f BA400100 		movl	$320, %edx
+ 419 025f BF5D0100 		movl	$349, %edi
  419      00
- 420 0284 488D3500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rsi
- 420      000000
- 421 028b 4889DF   		movq	%rbx, %rdi
- 422 028e E8000000 		call	dsp_convolution@PLT
- 422      00
- 423 0293 B9400100 		movl	$320, %ecx
+ 420 0264 E8000000 		call	calloc@PLT
+ 420      00
+ 421 0269 4889C3   		movq	%rax, %rbx
+ 422 026c 4889C7   		movq	%rax, %rdi
+ 423 026f E8000000 		call	check_mem_alloc
  423      00
- 424 0298 488D1500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdx
- 424      000000
- 425 029f 488D3500 		leaq	.LC21(%rip), %rsi
+ 424 0274 41B81D00 		movl	$29, %r8d
+ 424      0000
+ 425 027a 488D0D00 		leaq	Impulse_response(%rip), %rcx
  425      000000
- 426 02a6 4889EF   		movq	%rbp, %rdi
- 427 02a9 E8000000 		call	create_dat_file
- 427      00
- 428 02ae B91D0000 		movl	$29, %ecx
- 428      00
- 429 02b3 488D1500 		leaq	Impulse_response(%rip), %rdx
- 429      000000
- 430 02ba 488D3500 		leaq	.LC22(%rip), %rsi
- 430      000000
- 431 02c1 4889EF   		movq	%rbp, %rdi
- 432 02c4 E8000000 		call	create_dat_file
- 432      00
- 433 02c9 B95D0100 		movl	$349, %ecx
- 433      00
- 434 02ce 4889DA   		movq	%rbx, %rdx
- 435 02d1 488D3500 		leaq	.LC23(%rip), %rsi
- 435      000000
- 436 02d8 4889EF   		movq	%rbp, %rdi
- 437 02db E8000000 		call	create_dat_file
- 437      00
- 438 02e0 BE080000 		movl	$8, %esi
- 438      00
- 439 02e5 BF400100 		movl	$320, %edi
+ 426 0281 BA400100 		movl	$320, %edx
+ 426      00
+ 427 0286 488D3500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rsi
+ 427      000000
+ 428 028d 4889DF   		movq	%rbx, %rdi
+ 429 0290 E8000000 		call	dsp_convolution@PLT
+ 429      00
+ 430 0295 B9400100 		movl	$320, %ecx
+ 430      00
+ 431 029a 488D1500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdx
+ 431      000000
+ 432 02a1 488D3500 		leaq	.LC21(%rip), %rsi
+ 432      000000
+ 433 02a8 4889EF   		movq	%rbp, %rdi
+ 434 02ab E8000000 		call	create_dat_file
+ 434      00
+ 435 02b0 B91D0000 		movl	$29, %ecx
+ 435      00
+ 436 02b5 488D1500 		leaq	Impulse_response(%rip), %rdx
+ 436      000000
+ 437 02bc 488D3500 		leaq	.LC22(%rip), %rsi
+ 437      000000
+ 438 02c3 4889EF   		movq	%rbp, %rdi
+ 439 02c6 E8000000 		call	create_dat_file
  439      00
- 440 02ea E8000000 		call	calloc@PLT
+ 440 02cb B95D0100 		movl	$349, %ecx
  440      00
- 441 02ef 4889C3   		movq	%rax, %rbx
- 442 02f2 4889C7   		movq	%rax, %rdi
- 443 02f5 E8000000 		call	check_mem_alloc
- 443      00
- 444 02fa BA400100 		movl	$320, %edx
+ 441 02d0 4889DA   		movq	%rbx, %rdx
+ 442 02d3 488D3500 		leaq	.LC23(%rip), %rsi
+ 442      000000
+ 443 02da 4889EF   		movq	%rbp, %rdi
+ 444 02dd E8000000 		call	create_dat_file
  444      00
- 445 02ff 488D3500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rsi
- 445      000000
- 446 0306 4889DF   		movq	%rbx, %rdi
- 447 0309 E8000000 		call	dsp_running_sum@PLT
+ 445 02e2 BE080000 		movl	$8, %esi
+ 445      00
+ 446 02e7 BF400100 		movl	$320, %edi
+ 446      00
+ 447 02ec E8000000 		call	calloc@PLT
  447      00
- 448 030e B9400100 		movl	$320, %ecx
- 448      00
- 449 0313 488D1500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdx
- 449      000000
- 450 031a 488D3500 		leaq	.LC24(%rip), %rsi
- 450      000000
-GAS LISTING /tmp/cc6uZFiB.s 			page 14
+ 448 02f1 4889C3   		movq	%rax, %rbx
+ 449 02f4 4889C7   		movq	%rax, %rdi
+ 450 02f7 E8000000 		call	check_mem_alloc
+ 450      00
+ 451 02fc BA400100 		movl	$320, %edx
+ 451      00
+GAS LISTING /tmp/ccrHHPgQ.s 			page 14
 
 
- 451 0321 4889EF   		movq	%rbp, %rdi
- 452 0324 E8000000 		call	create_dat_file
- 452      00
- 453 0329 B9400100 		movl	$320, %ecx
- 453      00
- 454 032e 4889DA   		movq	%rbx, %rdx
- 455 0331 488D3500 		leaq	.LC25(%rip), %rsi
- 455      000000
- 456 0338 4889EF   		movq	%rbp, %rdi
- 457 033b E8000000 		call	create_dat_file
- 457      00
- 458 0340 4889DF   		movq	%rbx, %rdi
- 459 0343 E8000000 		call	free@PLT
+ 452 0301 488D3500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rsi
+ 452      000000
+ 453 0308 4889DF   		movq	%rbx, %rdi
+ 454 030b E8000000 		call	dsp_running_sum@PLT
+ 454      00
+ 455 0310 B9400100 		movl	$320, %ecx
+ 455      00
+ 456 0315 488D1500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdx
+ 456      000000
+ 457 031c 488D3500 		leaq	.LC24(%rip), %rsi
+ 457      000000
+ 458 0323 4889EF   		movq	%rbp, %rdi
+ 459 0326 E8000000 		call	create_dat_file
  459      00
- 460 0348 488D3500 		leaq	.LC10(%rip), %rsi
- 460      000000
- 461 034f BF010000 		movl	$1, %edi
- 461      00
- 462 0354 B8000000 		movl	$0, %eax
- 462      00
- 463 0359 E8000000 		call	__printf_chk@PLT
- 463      00
- 464 035e 488D3500 		leaq	.LC26(%rip), %rsi
- 464      000000
- 465 0365 BF010000 		movl	$1, %edi
- 465      00
- 466 036a B8000000 		movl	$0, %eax
+ 460 032b B9400100 		movl	$320, %ecx
+ 460      00
+ 461 0330 4889DA   		movq	%rbx, %rdx
+ 462 0333 488D3500 		leaq	.LC25(%rip), %rsi
+ 462      000000
+ 463 033a 4889EF   		movq	%rbp, %rdi
+ 464 033d E8000000 		call	create_dat_file
+ 464      00
+ 465 0342 4889DF   		movq	%rbx, %rdi
+ 466 0345 E8000000 		call	free@PLT
  466      00
- 467 036f E8000000 		call	__printf_chk@PLT
- 467      00
- 468 0374 488D3500 		leaq	.LC27(%rip), %rsi
- 468      000000
- 469 037b BF010000 		movl	$1, %edi
+ 467 034a 488D3500 		leaq	.LC10(%rip), %rsi
+ 467      000000
+ 468 0351 BF010000 		movl	$1, %edi
+ 468      00
+ 469 0356 B8000000 		movl	$0, %eax
  469      00
- 470 0380 B8000000 		movl	$0, %eax
+ 470 035b E8000000 		call	__printf_chk@PLT
  470      00
- 471 0385 E8000000 		call	__printf_chk@PLT
- 471      00
- 472 038a BE080000 		movl	$8, %esi
+ 471 0360 488D3500 		leaq	.LC26(%rip), %rsi
+ 471      000000
+ 472 0367 BF010000 		movl	$1, %edi
  472      00
- 473 038f BFA00000 		movl	$160, %edi
+ 473 036c B8000000 		movl	$0, %eax
  473      00
- 474 0394 E8000000 		call	calloc@PLT
+ 474 0371 E8000000 		call	__printf_chk@PLT
  474      00
- 475 0399 4989C4   		movq	%rax, %r12
- 476 039c 4889C7   		movq	%rax, %rdi
- 477 039f E8000000 		call	check_mem_alloc
+ 475 0376 488D3500 		leaq	.LC27(%rip), %rsi
+ 475      000000
+ 476 037d BF010000 		movl	$1, %edi
+ 476      00
+ 477 0382 B8000000 		movl	$0, %eax
  477      00
- 478 03a4 BE080000 		movl	$8, %esi
+ 478 0387 E8000000 		call	__printf_chk@PLT
  478      00
- 479 03a9 BFA00000 		movl	$160, %edi
+ 479 038c BE080000 		movl	$8, %esi
  479      00
- 480 03ae E8000000 		call	calloc@PLT
+ 480 0391 BFA00000 		movl	$160, %edi
  480      00
- 481 03b3 4889C3   		movq	%rax, %rbx
- 482 03b6 4889C7   		movq	%rax, %rdi
- 483 03b9 E8000000 		call	check_mem_alloc
-GAS LISTING /tmp/cc6uZFiB.s 			page 15
+ 481 0396 E8000000 		call	calloc@PLT
+ 481      00
+ 482 039b 4989C4   		movq	%rax, %r12
+ 483 039e 4889C7   		movq	%rax, %rdi
+GAS LISTING /tmp/ccrHHPgQ.s 			page 15
 
 
- 483      00
- 484 03be BE080000 		movl	$8, %esi
+ 484 03a1 E8000000 		call	check_mem_alloc
  484      00
- 485 03c3 BF400100 		movl	$320, %edi
+ 485 03a6 BE080000 		movl	$8, %esi
  485      00
- 486 03c8 E8000000 		call	calloc@PLT
+ 486 03ab BFA00000 		movl	$160, %edi
  486      00
- 487 03cd 4989C5   		movq	%rax, %r13
- 488 03d0 4889C7   		movq	%rax, %rdi
- 489 03d3 E8000000 		call	check_mem_alloc
- 489      00
- 490 03d8 B9400100 		movl	$320, %ecx
+ 487 03b0 E8000000 		call	calloc@PLT
+ 487      00
+ 488 03b5 4889C3   		movq	%rax, %rbx
+ 489 03b8 4889C7   		movq	%rax, %rdi
+ 490 03bb E8000000 		call	check_mem_alloc
  490      00
- 491 03dd 4889DA   		movq	%rbx, %rdx
- 492 03e0 4C89E6   		movq	%r12, %rsi
- 493 03e3 488D3D00 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdi
- 493      000000
- 494 03ea E8000000 		call	dsp_dft@PLT
- 494      00
- 495 03ef B9400100 		movl	$320, %ecx
- 495      00
- 496 03f4 488D1500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdx
- 496      000000
- 497 03fb 488D3500 		leaq	.LC28(%rip), %rsi
- 497      000000
- 498 0402 4889EF   		movq	%rbp, %rdi
- 499 0405 E8000000 		call	create_dat_file
+ 491 03c0 BE080000 		movl	$8, %esi
+ 491      00
+ 492 03c5 BF400100 		movl	$320, %edi
+ 492      00
+ 493 03ca E8000000 		call	calloc@PLT
+ 493      00
+ 494 03cf 4989C5   		movq	%rax, %r13
+ 495 03d2 4889C7   		movq	%rax, %rdi
+ 496 03d5 E8000000 		call	check_mem_alloc
+ 496      00
+ 497 03da BE080000 		movl	$8, %esi
+ 497      00
+ 498 03df BFA00000 		movl	$160, %edi
+ 498      00
+ 499 03e4 E8000000 		call	calloc@PLT
  499      00
- 500 040a B9A00000 		movl	$160, %ecx
- 500      00
- 501 040f 4C89E2   		movq	%r12, %rdx
- 502 0412 488D3500 		leaq	.LC29(%rip), %rsi
- 502      000000
- 503 0419 4889EF   		movq	%rbp, %rdi
- 504 041c E8000000 		call	create_dat_file
- 504      00
- 505 0421 B9A00000 		movl	$160, %ecx
- 505      00
- 506 0426 4889DA   		movq	%rbx, %rdx
- 507 0429 488D3500 		leaq	.LC30(%rip), %rsi
- 507      000000
- 508 0430 4889EF   		movq	%rbp, %rdi
- 509 0433 E8000000 		call	create_dat_file
- 509      00
- 510 0438 B9400100 		movl	$320, %ecx
- 510      00
- 511 043d 4889DA   		movq	%rbx, %rdx
- 512 0440 4C89E6   		movq	%r12, %rsi
- 513 0443 4C89EF   		movq	%r13, %rdi
- 514 0446 E8000000 		call	dsp_idft@PLT
- 514      00
- 515 044b B9400100 		movl	$320, %ecx
- 515      00
- 516 0450 4C89EA   		movq	%r13, %rdx
- 517 0453 488D3500 		leaq	.LC31(%rip), %rsi
- 517      000000
- 518 045a 4889EF   		movq	%rbp, %rdi
-GAS LISTING /tmp/cc6uZFiB.s 			page 16
+ 500 03e9 4989C6   		movq	%rax, %r14
+ 501 03ec 4889C7   		movq	%rax, %rdi
+ 502 03ef E8000000 		call	check_mem_alloc
+ 502      00
+ 503 03f4 B9400100 		movl	$320, %ecx
+ 503      00
+ 504 03f9 4889DA   		movq	%rbx, %rdx
+ 505 03fc 4C89E6   		movq	%r12, %rsi
+ 506 03ff 488D3D00 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdi
+ 506      000000
+ 507 0406 E8000000 		call	dsp_dft@PLT
+ 507      00
+ 508 040b B9A00000 		movl	$160, %ecx
+ 508      00
+ 509 0410 4889DA   		movq	%rbx, %rdx
+ 510 0413 4C89E6   		movq	%r12, %rsi
+ 511 0416 4C89F7   		movq	%r14, %rdi
+ 512 0419 E8000000 		call	dsp_dft_magnitude@PLT
+ 512      00
+ 513 041e B9400100 		movl	$320, %ecx
+ 513      00
+ 514 0423 488D1500 		leaq	InputSignal_f32_1kHz_15kHz(%rip), %rdx
+ 514      000000
+ 515 042a 488D3500 		leaq	.LC28(%rip), %rsi
+ 515      000000
+ 516 0431 4889EF   		movq	%rbp, %rdi
+ 517 0434 E8000000 		call	create_dat_file
+ 517      00
+ 518 0439 B9A00000 		movl	$160, %ecx
+GAS LISTING /tmp/ccrHHPgQ.s 			page 16
 
 
- 519 045d E8000000 		call	create_dat_file
- 519      00
- 520 0462 488D3500 		leaq	.LC10(%rip), %rsi
+ 518      00
+ 519 043e 4C89E2   		movq	%r12, %rdx
+ 520 0441 488D3500 		leaq	.LC29(%rip), %rsi
  520      000000
- 521 0469 BF010000 		movl	$1, %edi
- 521      00
- 522 046e B8000000 		movl	$0, %eax
+ 521 0448 4889EF   		movq	%rbp, %rdi
+ 522 044b E8000000 		call	create_dat_file
  522      00
- 523 0473 E8000000 		call	__printf_chk@PLT
+ 523 0450 B9A00000 		movl	$160, %ecx
  523      00
- 524 0478 4C89E7   		movq	%r12, %rdi
- 525 047b E8000000 		call	free@PLT
- 525      00
- 526 0480 4889DF   		movq	%rbx, %rdi
- 527 0483 E8000000 		call	free@PLT
+ 524 0455 4889DA   		movq	%rbx, %rdx
+ 525 0458 488D3500 		leaq	.LC30(%rip), %rsi
+ 525      000000
+ 526 045f 4889EF   		movq	%rbp, %rdi
+ 527 0462 E8000000 		call	create_dat_file
  527      00
- 528 0488 4C89EF   		movq	%r13, %rdi
- 529 048b E8000000 		call	free@PLT
- 529      00
- 530 0490 BE080000 		movl	$8, %esi
- 530      00
- 531 0495 BF400100 		movl	$320, %edi
- 531      00
- 532 049a E8000000 		call	calloc@PLT
+ 528 0467 B9400100 		movl	$320, %ecx
+ 528      00
+ 529 046c 4889DA   		movq	%rbx, %rdx
+ 530 046f 4C89E6   		movq	%r12, %rsi
+ 531 0472 4C89EF   		movq	%r13, %rdi
+ 532 0475 E8000000 		call	dsp_idft@PLT
  532      00
- 533 049f 4989C4   		movq	%rax, %r12
- 534 04a2 4889C7   		movq	%rax, %rdi
- 535 04a5 E8000000 		call	check_mem_alloc
- 535      00
- 536 04aa BE080000 		movl	$8, %esi
- 536      00
- 537 04af BF400100 		movl	$320, %edi
+ 533 047a B9400100 		movl	$320, %ecx
+ 533      00
+ 534 047f 4C89EA   		movq	%r13, %rdx
+ 535 0482 488D3500 		leaq	.LC31(%rip), %rsi
+ 535      000000
+ 536 0489 4889EF   		movq	%rbp, %rdi
+ 537 048c E8000000 		call	create_dat_file
  537      00
- 538 04b4 E8000000 		call	calloc@PLT
+ 538 0491 B9A00000 		movl	$160, %ecx
  538      00
- 539 04b9 4889C3   		movq	%rax, %rbx
- 540 04bc 4889C7   		movq	%rax, %rdi
- 541 04bf E8000000 		call	check_mem_alloc
- 541      00
- 542 04c4 BE080000 		movl	$8, %esi
+ 539 0496 4C89F2   		movq	%r14, %rdx
+ 540 0499 488D3500 		leaq	.LC32(%rip), %rsi
+ 540      000000
+ 541 04a0 4889EF   		movq	%rbp, %rdi
+ 542 04a3 E8000000 		call	create_dat_file
  542      00
- 543 04c9 BF800200 		movl	$640, %edi
- 543      00
- 544 04ce E8000000 		call	calloc@PLT
+ 543 04a8 488D3500 		leaq	.LC10(%rip), %rsi
+ 543      000000
+ 544 04af BF010000 		movl	$1, %edi
  544      00
- 545 04d3 4989C5   		movq	%rax, %r13
- 546 04d6 4889C7   		movq	%rax, %rdi
- 547 04d9 E8000000 		call	check_mem_alloc
- 547      00
- 548 04de B9800200 		movl	$640, %ecx
+ 545 04b4 B8000000 		movl	$0, %eax
+ 545      00
+ 546 04b9 E8000000 		call	__printf_chk@PLT
+ 546      00
+ 547 04be 4C89E7   		movq	%r12, %rdi
+ 548 04c1 E8000000 		call	free@PLT
  548      00
- 549 04e3 4889DA   		movq	%rbx, %rdx
- 550 04e6 4C89E6   		movq	%r12, %rsi
- 551 04e9 488D3D00 		leaq	ECG_signal(%rip), %rdi
- 551      000000
- 552 04f0 E8000000 		call	dsp_dft@PLT
+ 549 04c6 4889DF   		movq	%rbx, %rdi
+ 550 04c9 E8000000 		call	free@PLT
+ 550      00
+ 551 04ce 4C89F7   		movq	%r14, %rdi
+ 552 04d1 E8000000 		call	free@PLT
  552      00
-GAS LISTING /tmp/cc6uZFiB.s 			page 17
+ 553 04d6 4C89EF   		movq	%r13, %rdi
+ 554 04d9 E8000000 		call	free@PLT
+GAS LISTING /tmp/ccrHHPgQ.s 			page 17
 
 
- 553 04f5 B9800200 		movl	$640, %ecx
- 553      00
- 554 04fa 488D1500 		leaq	ECG_signal(%rip), %rdx
- 554      000000
- 555 0501 488D3500 		leaq	.LC32(%rip), %rsi
- 555      000000
- 556 0508 4889EF   		movq	%rbp, %rdi
- 557 050b E8000000 		call	create_dat_file
+ 554      00
+ 555 04de BE080000 		movl	$8, %esi
+ 555      00
+ 556 04e3 BF400100 		movl	$320, %edi
+ 556      00
+ 557 04e8 E8000000 		call	calloc@PLT
  557      00
- 558 0510 B9400100 		movl	$320, %ecx
- 558      00
- 559 0515 4C89E2   		movq	%r12, %rdx
- 560 0518 488D3500 		leaq	.LC33(%rip), %rsi
- 560      000000
- 561 051f 4889EF   		movq	%rbp, %rdi
- 562 0522 E8000000 		call	create_dat_file
+ 558 04ed 4989C4   		movq	%rax, %r12
+ 559 04f0 4889C7   		movq	%rax, %rdi
+ 560 04f3 E8000000 		call	check_mem_alloc
+ 560      00
+ 561 04f8 BE080000 		movl	$8, %esi
+ 561      00
+ 562 04fd BF400100 		movl	$320, %edi
  562      00
- 563 0527 B9400100 		movl	$320, %ecx
+ 563 0502 E8000000 		call	calloc@PLT
  563      00
- 564 052c 4889DA   		movq	%rbx, %rdx
- 565 052f 488D3500 		leaq	.LC34(%rip), %rsi
- 565      000000
- 566 0536 4889EF   		movq	%rbp, %rdi
- 567 0539 E8000000 		call	create_dat_file
+ 564 0507 4889C3   		movq	%rax, %rbx
+ 565 050a 4889C7   		movq	%rax, %rdi
+ 566 050d E8000000 		call	check_mem_alloc
+ 566      00
+ 567 0512 BE080000 		movl	$8, %esi
  567      00
- 568 053e B9800200 		movl	$640, %ecx
+ 568 0517 BF800200 		movl	$640, %edi
  568      00
- 569 0543 4889DA   		movq	%rbx, %rdx
- 570 0546 4C89E6   		movq	%r12, %rsi
- 571 0549 4C89EF   		movq	%r13, %rdi
- 572 054c E8000000 		call	dsp_idft@PLT
+ 569 051c E8000000 		call	calloc@PLT
+ 569      00
+ 570 0521 4989C5   		movq	%rax, %r13
+ 571 0524 4889C7   		movq	%rax, %rdi
+ 572 0527 E8000000 		call	check_mem_alloc
  572      00
- 573 0551 B9800200 		movl	$640, %ecx
+ 573 052c B9800200 		movl	$640, %ecx
  573      00
- 574 0556 4C89EA   		movq	%r13, %rdx
- 575 0559 488D3500 		leaq	.LC35(%rip), %rsi
- 575      000000
- 576 0560 4889EF   		movq	%rbp, %rdi
- 577 0563 E8000000 		call	create_dat_file
+ 574 0531 4889DA   		movq	%rbx, %rdx
+ 575 0534 4C89E6   		movq	%r12, %rsi
+ 576 0537 488D3D00 		leaq	ECG_signal(%rip), %rdi
+ 576      000000
+ 577 053e E8000000 		call	dsp_dft@PLT
  577      00
- 578 0568 4C89E7   		movq	%r12, %rdi
- 579 056b E8000000 		call	free@PLT
- 579      00
- 580 0570 4889DF   		movq	%rbx, %rdi
- 581 0573 E8000000 		call	free@PLT
- 581      00
- 582 0578 4C89EF   		movq	%r13, %rdi
- 583 057b E8000000 		call	free@PLT
+ 578 0543 B9800200 		movl	$640, %ecx
+ 578      00
+ 579 0548 488D1500 		leaq	ECG_signal(%rip), %rdx
+ 579      000000
+ 580 054f 488D3500 		leaq	.LC33(%rip), %rsi
+ 580      000000
+ 581 0556 4889EF   		movq	%rbp, %rdi
+ 582 0559 E8000000 		call	create_dat_file
+ 582      00
+ 583 055e B9400100 		movl	$320, %ecx
  583      00
- 584 0580 B8000000 		movl	$0, %eax
- 584      00
- 585 0585 4883C428 		addq	$40, %rsp
- 586              		.cfi_def_cfa_offset 40
- 587 0589 5B       		popq	%rbx
- 588              		.cfi_def_cfa_offset 32
- 589 058a 5D       		popq	%rbp
- 590              		.cfi_def_cfa_offset 24
-GAS LISTING /tmp/cc6uZFiB.s 			page 18
+ 584 0563 4C89E2   		movq	%r12, %rdx
+ 585 0566 488D3500 		leaq	.LC34(%rip), %rsi
+ 585      000000
+ 586 056d 4889EF   		movq	%rbp, %rdi
+ 587 0570 E8000000 		call	create_dat_file
+ 587      00
+ 588 0575 B9400100 		movl	$320, %ecx
+GAS LISTING /tmp/ccrHHPgQ.s 			page 18
 
 
- 591 058b 415C     		popq	%r12
- 592              		.cfi_def_cfa_offset 16
- 593 058d 415D     		popq	%r13
- 594              		.cfi_def_cfa_offset 8
- 595 058f C3       		ret
- 596              		.cfi_endproc
- 597              	.LFE36:
- 599              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
- 600              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/cc6uZFiB.s 			page 19
+ 588      00
+ 589 057a 4889DA   		movq	%rbx, %rdx
+ 590 057d 488D3500 		leaq	.LC35(%rip), %rsi
+ 590      000000
+ 591 0584 4889EF   		movq	%rbp, %rdi
+ 592 0587 E8000000 		call	create_dat_file
+ 592      00
+ 593 058c B9800200 		movl	$640, %ecx
+ 593      00
+ 594 0591 4889DA   		movq	%rbx, %rdx
+ 595 0594 4C89E6   		movq	%r12, %rsi
+ 596 0597 4C89EF   		movq	%r13, %rdi
+ 597 059a E8000000 		call	dsp_idft@PLT
+ 597      00
+ 598 059f B9800200 		movl	$640, %ecx
+ 598      00
+ 599 05a4 4C89EA   		movq	%r13, %rdx
+ 600 05a7 488D3500 		leaq	.LC36(%rip), %rsi
+ 600      000000
+ 601 05ae 4889EF   		movq	%rbp, %rdi
+ 602 05b1 E8000000 		call	create_dat_file
+ 602      00
+ 603 05b6 488D3500 		leaq	.LC10(%rip), %rsi
+ 603      000000
+ 604 05bd BF010000 		movl	$1, %edi
+ 604      00
+ 605 05c2 B8000000 		movl	$0, %eax
+ 605      00
+ 606 05c7 E8000000 		call	__printf_chk@PLT
+ 606      00
+ 607 05cc 4C89E7   		movq	%r12, %rdi
+ 608 05cf E8000000 		call	free@PLT
+ 608      00
+ 609 05d4 4889DF   		movq	%rbx, %rdi
+ 610 05d7 E8000000 		call	free@PLT
+ 610      00
+ 611 05dc 4C89EF   		movq	%r13, %rdi
+ 612 05df E8000000 		call	free@PLT
+ 612      00
+ 613 05e4 B8000000 		movl	$0, %eax
+ 613      00
+ 614 05e9 4883C420 		addq	$32, %rsp
+ 615              		.cfi_def_cfa_offset 48
+ 616 05ed 5B       		popq	%rbx
+ 617              		.cfi_def_cfa_offset 40
+ 618 05ee 5D       		popq	%rbp
+ 619              		.cfi_def_cfa_offset 32
+ 620 05ef 415C     		popq	%r12
+ 621              		.cfi_def_cfa_offset 24
+ 622 05f1 415D     		popq	%r13
+ 623              		.cfi_def_cfa_offset 16
+ 624 05f3 415E     		popq	%r14
+ 625              		.cfi_def_cfa_offset 8
+ 626 05f5 C3       		ret
+ 627              		.cfi_endproc
+ 628              	.LFE36:
+ 630              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+GAS LISTING /tmp/ccrHHPgQ.s 			page 19
+
+
+ 631              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccrHHPgQ.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/cc6uZFiB.s:8      .text.check_mem_alloc:0000000000000000 check_mem_alloc
-     /tmp/cc6uZFiB.s:30     .text.prepare_path:0000000000000000 prepare_path
-     /tmp/cc6uZFiB.s:95     .text.create_dat_file:0000000000000000 create_dat_file
-     /tmp/cc6uZFiB.s:270    .text.main:0000000000000000 main
-     /tmp/cc6uZFiB.s:4      .rodata.check_mem_alloc.str1.1:0000000000000000 .LC0
-     /tmp/cc6uZFiB.s:81     .rodata.create_dat_file.str1.1:0000000000000000 .LC1
-     /tmp/cc6uZFiB.s:85     .rodata.create_dat_file.str1.8:0000000000000000 .LC2
-     /tmp/cc6uZFiB.s:88     .rodata.create_dat_file.str1.1:0000000000000003 .LC3
-     /tmp/cc6uZFiB.s:90     .rodata.create_dat_file.str1.1:0000000000000007 .LC4
-     /tmp/cc6uZFiB.s:181    .rodata.main.str1.1:0000000000000000 .LC5
-     /tmp/cc6uZFiB.s:183    .rodata.main.str1.1:0000000000000015 .LC6
-     /tmp/cc6uZFiB.s:185    .rodata.main.str1.1:000000000000002a .LC7
-     /tmp/cc6uZFiB.s:189    .rodata.main.str1.8:0000000000000000 .LC8
-     /tmp/cc6uZFiB.s:192    .rodata.main.str1.8:0000000000000040 .LC9
-     /tmp/cc6uZFiB.s:195    .rodata.main.str1.1:0000000000000044 .LC10
-     /tmp/cc6uZFiB.s:197    .rodata.main.str1.1:0000000000000046 .LC11
-     /tmp/cc6uZFiB.s:199    .rodata.main.str1.1:0000000000000055 .LC12
-     /tmp/cc6uZFiB.s:203    .rodata.main.str1.8:00000000000000a8 .LC13
-     /tmp/cc6uZFiB.s:206    .rodata.main.str1.8:00000000000000d0 .LC14
-     /tmp/cc6uZFiB.s:209    .rodata.main.str1.8:0000000000000110 .LC15
-     /tmp/cc6uZFiB.s:212    .rodata.main.str1.1:0000000000000072 .LC16
-     /tmp/cc6uZFiB.s:214    .rodata.main.str1.1:0000000000000086 .LC17
-     /tmp/cc6uZFiB.s:216    .rodata.main.str1.1:000000000000009a .LC18
-     /tmp/cc6uZFiB.s:218    .rodata.main.str1.1:00000000000000af .LC19
-     /tmp/cc6uZFiB.s:220    .rodata.main.str1.1:00000000000000c1 .LC20
-     /tmp/cc6uZFiB.s:224    .rodata.main.str1.8:0000000000000150 .LC21
-     /tmp/cc6uZFiB.s:227    .rodata.main.str1.8:0000000000000178 .LC22
-     /tmp/cc6uZFiB.s:230    .rodata.main.str1.8:00000000000001a8 .LC23
-     /tmp/cc6uZFiB.s:233    .rodata.main.str1.8:00000000000001d0 .LC24
-     /tmp/cc6uZFiB.s:236    .rodata.main.str1.8:00000000000001f8 .LC25
-     /tmp/cc6uZFiB.s:239    .rodata.main.str1.8:0000000000000220 .LC26
-     /tmp/cc6uZFiB.s:242    .rodata.main.str1.8:0000000000000248 .LC27
-     /tmp/cc6uZFiB.s:245    .rodata.main.str1.1:00000000000000d3 .LC28
-     /tmp/cc6uZFiB.s:247    .rodata.main.str1.1:00000000000000f0 .LC29
-     /tmp/cc6uZFiB.s:249    .rodata.main.str1.1:000000000000010b .LC30
-     /tmp/cc6uZFiB.s:253    .rodata.main.str1.8:0000000000000270 .LC31
-     /tmp/cc6uZFiB.s:256    .rodata.main.str1.8:0000000000000290 .LC32
-     /tmp/cc6uZFiB.s:259    .rodata.main.str1.8:00000000000002b8 .LC33
-     /tmp/cc6uZFiB.s:262    .rodata.main.str1.8:00000000000002d8 .LC34
-     /tmp/cc6uZFiB.s:265    .rodata.main.str1.8:00000000000002f8 .LC35
+     /tmp/ccrHHPgQ.s:8      .text.check_mem_alloc:0000000000000000 check_mem_alloc
+     /tmp/ccrHHPgQ.s:30     .text.prepare_path:0000000000000000 prepare_path
+     /tmp/ccrHHPgQ.s:95     .text.create_dat_file:0000000000000000 create_dat_file
+     /tmp/ccrHHPgQ.s:274    .text.main:0000000000000000 main
+     /tmp/ccrHHPgQ.s:4      .rodata.check_mem_alloc.str1.1:0000000000000000 .LC0
+     /tmp/ccrHHPgQ.s:81     .rodata.create_dat_file.str1.1:0000000000000000 .LC1
+     /tmp/ccrHHPgQ.s:85     .rodata.create_dat_file.str1.8:0000000000000000 .LC2
+     /tmp/ccrHHPgQ.s:88     .rodata.create_dat_file.str1.1:0000000000000003 .LC3
+     /tmp/ccrHHPgQ.s:90     .rodata.create_dat_file.str1.1:0000000000000007 .LC4
+     /tmp/ccrHHPgQ.s:181    .rodata.main.str1.1:0000000000000000 .LC5
+     /tmp/ccrHHPgQ.s:183    .rodata.main.str1.1:0000000000000015 .LC6
+     /tmp/ccrHHPgQ.s:185    .rodata.main.str1.1:000000000000002a .LC7
+     /tmp/ccrHHPgQ.s:189    .rodata.main.str1.8:0000000000000000 .LC8
+     /tmp/ccrHHPgQ.s:192    .rodata.main.str1.8:0000000000000040 .LC9
+     /tmp/ccrHHPgQ.s:195    .rodata.main.str1.1:0000000000000044 .LC10
+     /tmp/ccrHHPgQ.s:197    .rodata.main.str1.1:0000000000000046 .LC11
+     /tmp/ccrHHPgQ.s:199    .rodata.main.str1.1:0000000000000055 .LC12
+     /tmp/ccrHHPgQ.s:203    .rodata.main.str1.8:00000000000000a8 .LC13
+     /tmp/ccrHHPgQ.s:206    .rodata.main.str1.8:00000000000000d0 .LC14
+     /tmp/ccrHHPgQ.s:209    .rodata.main.str1.8:0000000000000110 .LC15
+     /tmp/ccrHHPgQ.s:212    .rodata.main.str1.1:0000000000000072 .LC16
+     /tmp/ccrHHPgQ.s:214    .rodata.main.str1.1:0000000000000086 .LC17
+     /tmp/ccrHHPgQ.s:216    .rodata.main.str1.1:000000000000009a .LC18
+     /tmp/ccrHHPgQ.s:218    .rodata.main.str1.1:00000000000000af .LC19
+     /tmp/ccrHHPgQ.s:220    .rodata.main.str1.1:00000000000000c1 .LC20
+     /tmp/ccrHHPgQ.s:224    .rodata.main.str1.8:0000000000000150 .LC21
+     /tmp/ccrHHPgQ.s:227    .rodata.main.str1.8:0000000000000178 .LC22
+     /tmp/ccrHHPgQ.s:230    .rodata.main.str1.8:00000000000001a8 .LC23
+     /tmp/ccrHHPgQ.s:233    .rodata.main.str1.8:00000000000001d0 .LC24
+     /tmp/ccrHHPgQ.s:236    .rodata.main.str1.8:00000000000001f8 .LC25
+     /tmp/ccrHHPgQ.s:239    .rodata.main.str1.8:0000000000000220 .LC26
+     /tmp/ccrHHPgQ.s:242    .rodata.main.str1.8:0000000000000248 .LC27
+     /tmp/ccrHHPgQ.s:245    .rodata.main.str1.1:00000000000000d3 .LC28
+     /tmp/ccrHHPgQ.s:247    .rodata.main.str1.1:00000000000000f0 .LC29
+     /tmp/ccrHHPgQ.s:249    .rodata.main.str1.1:000000000000010b .LC30
+     /tmp/ccrHHPgQ.s:253    .rodata.main.str1.8:0000000000000270 .LC31
+     /tmp/ccrHHPgQ.s:256    .rodata.main.str1.1:0000000000000126 .LC32
+     /tmp/ccrHHPgQ.s:260    .rodata.main.str1.8:0000000000000290 .LC33
+     /tmp/ccrHHPgQ.s:263    .rodata.main.str1.8:00000000000002b8 .LC34
+     /tmp/ccrHHPgQ.s:266    .rodata.main.str1.8:00000000000002d8 .LC35
+     /tmp/ccrHHPgQ.s:269    .rodata.main.str1.8:00000000000002f8 .LC36
 
 UNDEFINED SYMBOLS
 stderr
@@ -1089,10 +1142,10 @@ stdout
 fclose
 free
 __printf_chk
+GAS LISTING /tmp/ccrHHPgQ.s 			page 21
+
+
 readlink
-GAS LISTING /tmp/cc6uZFiB.s 			page 20
-
-
 memcpy
 InputSignal_f32_1kHz_15kHz
 dsp_sig_mean
@@ -1103,5 +1156,6 @@ Impulse_response
 dsp_convolution
 dsp_running_sum
 dsp_dft
+dsp_dft_magnitude
 dsp_idft
 ECG_signal
