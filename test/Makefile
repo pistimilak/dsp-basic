@@ -142,6 +142,10 @@ $(BUILD_DIR):
 clean:
 	-rm -R $(BUILD_DIR)/*
 	-rm -R $(BIN_DIR)/*
+	-rm -R dat/convolution/*.dat
+	-rm -R dat/convolution/*.html
+	-rm -R dat/dft/*.dat
+	-rm -R dat/dft/*.html
 
 
 #######################################

@@ -1,3 +1,4 @@
+
 # Istvan Milak
 # Convolution plot
 # $ gnuplot -p conv.plot

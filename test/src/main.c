@@ -30,35 +30,13 @@
 
 
 static inline void check_mem_alloc(void *mem);
-int create_dat_file(const char *fname, const dsp_val_t *data_array, const dsp_size_t size);
-
+void create_dat_file(const char *test_path, const char *rel_path, const dsp_val_t *data_array, const dsp_size_t size);
+char *prepare_path(const char *test_path, const char *rel_path);
 
 int main(void)
 {
 
     size_t full_path_len;
-
-    /*Getting full path of executable*/
-    char *full_path = (char *) malloc(STR_BUFF_SIZE);
-    memset(full_path, 0, STR_BUFF_SIZE);
-
-    full_path_len = readlink("/proc/self/exe", full_path, STR_BUFF_SIZE);
-    printf("Full path of executable:\t%s (len: %d)\n", full_path, full_path_len);
-    
-    /*Getting executable absolut path*/
-    char *exe_abs_path = (char *) malloc(full_path_len + 1);
-    memset(exe_abs_path, 0, full_path_len + 1);
-    char *res_p = realpath(full_path, exe_abs_path);
-
-    free(full_path);
-
-    if (res_p == NULL) {
-        fprintf(stderr, "Absolute path of executable is not defined\n");
-        free(exe_abs_path);
-        return 1;
-    } else {
-        printf("Absolute path of executable:\t%s (len: %d)\n", exe_abs_path, strlen(exe_abs_path));
-    }
 
     printf("Testing DSP library\n");
     printf("===================\n");
@@ -66,6 +44,30 @@ int main(void)
     printf("The software generate the calculation result *.dat files\n");
     printf("You can find the correspondig dat files in test/dat/* dirs with html output and gnuplot scripts\n");
     printf("\n");
+
+    /*Getting full path of executable*/
+    char *full_path = (char *) malloc(STR_BUFF_SIZE);
+    memset(full_path, 0, STR_BUFF_SIZE);
+
+    full_path_len = readlink("/proc/self/exe", full_path, STR_BUFF_SIZE);
+    printf("Full path of executable:\t%s\n", full_path, full_path_len);
+    
+    /*Getting executable absolut path*/
+    char *test_abs_path = (char *) malloc(full_path_len + 1);
+    memcpy(test_abs_path, full_path, full_path_len);
+    *(test_abs_path + full_path_len) = 0; //terminate
+
+    /*skip the exe file name from string*/
+    char *endp = (test_abs_path + full_path_len);
+    
+    /*step back 2 dir level*/
+    int i;
+    for(i = 0; i < 2; i++, (i <= 1) ? endp-- : (void)0) 
+        while(*endp != '/') endp--; 
+    *endp = 0; //terminate
+
+    free(full_path);
+    printf("Absolute path of test directory:\t%s\n\n", test_abs_path, strlen(test_abs_path));
 
 //////////////////////////////////////////////////////////////////////////////
 #if TEST_SIG_STATISTIC
@@ -108,37 +110,21 @@ int main(void)
 
     
     /*Create convolution input signal dat file*/
-    if(!create_dat_file("../dat/convolution/conv_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 
-        fprintf(stderr, "An error occured in ../dat/convolution/conv_input_signal.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/convolution/conv_input_signal.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/convolution/conv_input_signal.dat", 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
 
 
     /*Create convolution impulse response dat file*/
-    if(!create_dat_file("../dat/convolution/conv_impulse_response.dat", (dsp_val_t *)Impulse_response, IMPULSE_RESP_SIZE)){ 
-        fprintf(stderr, "An error occured in ../dat/convolution/conv_impulse_response.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/convolution/conv_impulse_response.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/convolution/conv_impulse_response.dat", 
+                    (dsp_val_t *)Impulse_response, IMPULSE_RESP_SIZE);
 
 
     /*Create convolution output signal */
-    if(!create_dat_file("../dat/convolution/conv_output_signal.dat", conv_output_signal, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE)) {
-        fprintf(stderr, "An error occured in ../dat/convolution/conv_output_signal.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/convolution/conv_output_signal.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/convolution/conv_output_signal.dat", 
+                    conv_output_signal, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE);
 
-    free(conv_output_signal);
-
-    // dsp_val_t running_sum_ouptut_signal[INP_SIG_F32_1K_15K_SIZE];
+    /*Running su*/
     dsp_val_t *running_sum_ouptut_signal = (dsp_val_t *) calloc(INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
-
-    // running_sum_ouptut_signal = mem_slot0 = (dsp_val_t *) realloc(mem_slot0, sizeof(dsp_val_t) * INP_SIG_F32_1K_15K_SIZE);
 
     check_mem_alloc(running_sum_ouptut_signal);
 
@@ -146,23 +132,18 @@ int main(void)
     dsp_running_sum(running_sum_ouptut_signal, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
 
     /*Cerate runing sum input signal*/
-    if(!create_dat_file("../dat/convolution/rsum_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 
-        fprintf(stderr, "An error occured in ../dat/convolution/rsum_input_signal.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/convolution/rsum_input_signal.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/convolution/rsum_input_signal.dat", 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
+
 
     /*Create running sum output signal*/
-    if(!create_dat_file("../dat/convolution/rsum_output_signal.dat", (dsp_val_t *)running_sum_ouptut_signal, INP_SIG_F32_1K_15K_SIZE)){ 
-        fprintf(stderr, "An error occured in ../dat/convolution/rsum_output_signal.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/convolution/rsum_output_signal.dat created\n");
-    }
-    printf("\n");
+    create_dat_file(test_abs_path, "dat/convolution/rsum_output_signal.dat", 
+                    (dsp_val_t *)running_sum_ouptut_signal, INP_SIG_F32_1K_15K_SIZE);
 
     free(running_sum_ouptut_signal);
+    
+    printf("\n");
+
 #endif
 
 //////////////////////////////////////////////////////////////////////////////
@@ -189,40 +170,24 @@ int main(void)
     
 
     /*Cerate  DFT input signal*/
-    if(!create_dat_file("../dat/dft/dft_input_signal.dat", (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE)) { 
-        fprintf(stderr, "An error occured in ../dat/dft/dft_input_signal.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/dft/dft_input_signal.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/dft/dft_input_signal.dat", 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
 
     /*Cerate  DFT output rex signal*/
-    if(!create_dat_file("../dat/dft/dft_output_rex.dat", dft_output_rex, INP_SIG_F32_1K_15K_SIZE / 2)) { 
-        fprintf(stderr, "An error occured in ../dat/dft/dft_output_rex.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/dft/dft_output_rex.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/dft/dft_output_rex.dat", 
+                    dft_output_rex, INP_SIG_F32_1K_15K_SIZE / 2);
 
     /*Cerate  DFT output imx signal*/
-    if(!create_dat_file("../dat/dft/dft_output_imx.dat", dft_output_imx, INP_SIG_F32_1K_15K_SIZE / 2)) { 
-        fprintf(stderr, "An error occured in ../dat/dft/dft_output_imx.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/dft/dft_output_imx.dat created\n");
-    }
+    create_dat_file(test_abs_path, "dat/dft/dft_output_imx.dat", 
+                    dft_output_imx, INP_SIG_F32_1K_15K_SIZE / 2);
 
     /*Regenerate the original signal with IDFT*/
     dsp_idft(idft_output_signal, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
 
 
     /*Cerate  DFT input signal*/
-    if(!create_dat_file("../dat/dft/idft_output_signal.dat", idft_output_signal, INP_SIG_F32_1K_15K_SIZE)) { 
-        fprintf(stderr, "An error occured in ../dat/dft/idft_output_signal.dat file creation\n");
-        return 1;
-    } else {
-        printf("../dat/dft/idft_output_signal.dat created\n");
-    }
+    create_dat_file(test_abs_path, "../dat/dft/idft_output_signal.dat", 
+                    idft_output_signal, INP_SIG_F32_1K_15K_SIZE);
 
     printf("\n");
     free(dft_output_rex);
@@ -237,25 +202,35 @@ int main(void)
 /**
  * @brief Create a dat file from array to test with GNU Plot
  * 
- * @param fname file name
+ * @param test_path test absoulute path
+ * @param rel_path relative path in test directory
  * @param data_array data array
  * @param size size of data array
- * @return int result of creation, 0 if an error, otherwise the size of array
  */
-int create_dat_file(const char *fname, const dsp_val_t *data_array, const dsp_size_t size)
+void create_dat_file(const char *test_path, const char *rel_path, const dsp_val_t *data_array, const dsp_size_t size)
 {
-    FILE *fd =  fopen(fname, "w+");
+    FILE *fd;
     
-    /*Error during opening the file*/
-    if (fd == NULL)
-        return 0;
+    char *path = prepare_path(test_path, rel_path);
+    
 
+    check_mem_alloc(path);
+
+    fd = fopen(path, "w+");
+
+    /*Error during opening the file*/
+    if (fd == NULL) {
+        fprintf(stderr, "An error occured in file creation: %s\n", path);
+        exit(EXIT_FAILURE);
+    }
+        
     dsp_size_t i;
     for (i = 0; i < size; fprintf(fd, "\n%f", *(data_array + i)), i++);
 
+    fprintf(stdout, "%s created. (%d elements)\n", path, size);
+    
     fclose(fd);
-    // return with the printed data
-    return size;
+    free(path);
 }
 
 static inline void check_mem_alloc(void *mem) 
@@ -264,4 +239,18 @@ static inline void check_mem_alloc(void *mem)
         fprintf(stderr, "Memmory allocation error!\n");
         exit(EXIT_FAILURE);
     }
+}
+
+char *prepare_path(const char *test_path, const char *rel_path)
+{
+    int len_test_path = strlen(test_path);
+    int len_rel_path = strlen(rel_path); 
+    
+    char *path = malloc(len_test_path + len_rel_path + 2);
+    
+    strcpy(path, test_path);
+    *(path + len_test_path) = '/';
+    strcpy(path + len_test_path + 1, rel_path);
+    
+    return path;
 }

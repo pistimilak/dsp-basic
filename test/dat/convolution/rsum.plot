@@ -1,3 +1,4 @@
+
 # Istvan Milak
 # Running sum plot
 # $ gnuplot -p rsum.plot
@@ -12,6 +13,3 @@ set origin 0,0.5
 plot 'rsum_input_signal.dat' with lines lc rgb 'black'
 set origin 0.5,0.5
 plot 'rsum_output_signal.dat' with lines lc rgb 'red'
-
-
-
