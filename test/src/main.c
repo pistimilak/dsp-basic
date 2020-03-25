@@ -184,15 +184,56 @@ int main(void)
     /*Regenerate the original signal with IDFT*/
     dsp_idft(idft_output_signal, dft_output_rex, dft_output_imx, INP_SIG_F32_1K_15K_SIZE);
 
-
     /*Cerate  DFT input signal*/
-    create_dat_file(test_abs_path, "../dat/dft/idft_output_signal.dat", 
+    create_dat_file(test_abs_path, "/dat/dft/idft_output_signal.dat", 
                     idft_output_signal, INP_SIG_F32_1K_15K_SIZE);
 
     printf("\n");
     free(dft_output_rex);
     free(dft_output_imx);
     free(idft_output_signal);
+
+    /*ECG signal*/
+    /*dft_ecg_output_rex*/
+    dsp_val_t *dft_ecg_output_rex = (dsp_val_t *) calloc(ECG_SIGNAL_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_ecg_output_rex);
+
+    /*dft_output_imx*/
+    dsp_val_t *dft_ecg_output_imx = (dsp_val_t *) calloc(ECG_SIGNAL_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_ecg_output_imx);
+
+
+    /*idft output signal*/
+    dsp_val_t *idft_ecg_output_signal = (dsp_val_t *) calloc(ECG_SIGNAL_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(idft_ecg_output_signal);
+
+    /*Discrete fourier transform*/
+    dsp_dft((dsp_val_t *)ECG_signal, dft_ecg_output_rex, dft_ecg_output_imx, ECG_SIGNAL_SIZE);
+    
+
+    /*Cerate  DFT input signal*/
+    create_dat_file(test_abs_path, "dat/dft/dft_ecg_input_signal.dat", 
+                    (dsp_val_t *)ECG_signal, ECG_SIGNAL_SIZE);
+
+    /*Cerate  DFT output rex signal*/
+    create_dat_file(test_abs_path, "dat/dft/dft_ecg_output_rex.dat", 
+                    dft_ecg_output_rex, ECG_SIGNAL_SIZE / 2);
+
+    /*Cerate  DFT output imx signal*/
+    create_dat_file(test_abs_path, "dat/dft/dft_ecg_output_imx.dat", 
+                    dft_ecg_output_imx, ECG_SIGNAL_SIZE / 2);
+
+    /*Regenerate the original signal with IDFT*/
+    dsp_idft(idft_ecg_output_signal, dft_ecg_output_rex, dft_ecg_output_imx, ECG_SIGNAL_SIZE);
+
+    /*Cerate  DFT input signal*/
+    create_dat_file(test_abs_path, "/dat/dft/idft_ecg_output_signal.dat", 
+                    idft_ecg_output_signal, ECG_SIGNAL_SIZE);
+
+    free(dft_ecg_output_rex);
+    free(dft_ecg_output_imx);
+    free(idft_ecg_output_signal);
+
 #endif
 
     return 0;

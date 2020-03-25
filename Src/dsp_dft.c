@@ -38,11 +38,10 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
 {
     dsp_size_t i, j, k;
 
-    // rest dest arrays
-    for(j = 0; j < (input_sig_len / 2); *(dest_rex + j) = *(dest_imx + j) = 0.0, j++);
-
     // calc re and im arrays as result
-    for(k = 0; k < (input_sig_len / 2); k++) {
+    for(k = 0, *(dest_rex + k) = *(dest_imx + k) = 0; 
+        k < (input_sig_len / 2); k++) {
+        
         for(i = 0; i < input_sig_len; i++) {
             *(dest_rex + k) += *(input_sig + i) * cos(2.0 * M_PI * k *i / input_sig_len);
             *(dest_imx + k) -= *(input_sig + i) * sin(2.0 * M_PI * k *i / input_sig_len);
@@ -64,27 +63,30 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
 void dsp_idft(dsp_val_t *dest_sig, dsp_val_t *input_rex,  dsp_val_t *input_imx, dsp_size_t idft_len)
 {
     dsp_size_t i, k;
-    dsp_val_t div_rex = 2.0, div_imx = -2.0; // dividers
-
-    // prepare input rex and imx
-    // exception at zero index
-    *input_rex /=  div_rex;
-    *input_imx /= div_imx; 
-
-    for(k = 1, div_rex = ((dsp_val_t)idft_len / 2.0), div_imx = -1.0 * ((dsp_val_t)idft_len / 2.0); 
-        k < idft_len / 2; k++) {
-        *(input_rex + k) /= div_rex;
-        *(input_imx + k) /= div_imx;
-    }
-
+    dsp_val_t div_rex, div_imx; // dividers
+    dsp_val_t rex, imx;
+ 
     // reset destination array
     for(i = 0; i < idft_len; *(dest_sig + i) = 0.0, i++);
 
     // calc output signal
-    for(k = 0; k < idft_len / 2; k++) {
+    for(k = 0, div_rex = ((dsp_val_t)idft_len / 2.0), div_imx = -1.0 * ((dsp_val_t)idft_len / 2.0); 
+        k < idft_len / 2; k++) {
+        
+        // prepare input rex and imx
+        rex = *(input_rex + k) / div_rex;
+        imx = *(input_imx + k) / div_imx;
+
+        // exception at zero index
+        if(!k) {
+            rex /= 2.0;
+            imx /= -2.0;
+        }
+
+        // Calculate output signal
         for(i = 0; i < idft_len; i++) {
-            *(dest_sig + i) += *(input_rex + k) * cos(2.0 * M_PI * k * i / idft_len);
-            *(dest_sig + i) += *(input_imx + k) * sin(2.0 * M_PI * k * i / idft_len);
+            *(dest_sig + i) += rex * cos(2.0 * M_PI * k * i / idft_len);
+            *(dest_sig + i) += imx * sin(2.0 * M_PI * k * i / idft_len);
         }
     }
 }
