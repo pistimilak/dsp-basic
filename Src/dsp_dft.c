@@ -39,10 +39,8 @@ void dsp_dft(dsp_val_t *input_sig, dsp_val_t *dest_rex,  dsp_val_t *dest_imx, ds
     dsp_size_t i, k;
 
     // calc re and im arrays as result
-    for(k = 0, *(dest_rex + k) = *(dest_imx + k) = 0; 
-        k < (input_sig_len / 2); k++) {
-        
-        for(i = 0; i < input_sig_len; i++) {
+    for(k = 0; k < (input_sig_len / 2); k++) {
+        for(i = 0, *(dest_rex + k) = 0, *(dest_imx + k) = 0; i < input_sig_len; i++) {
             *(dest_rex + k) += *(input_sig + i) * cos(2.0 * M_PI * k *i / input_sig_len);
             *(dest_imx + k) -= *(input_sig + i) * sin(2.0 * M_PI * k *i / input_sig_len);
         }
@@ -133,27 +131,31 @@ void dsp_dft_magnitude(dsp_val_t *dest_mag, dsp_val_t *rex, dsp_val_t *imx, dsp_
  * @param imx_input ImX input signal arrau
  * @param sig_len Length of ReX and Imx
  */
+
+
 void dsp_rect2polar(dsp_val_t *mag_output, dsp_val_t *phase_output,
                     dsp_val_t *rex_input, dsp_val_t *imx_input, 
                     dsp_size_t sig_len)
 {
     dsp_size_t k;
-
+    const dsp_val_t zero_for_calc = 10e-20;
     for(k = 0; k < sig_len; k++) {
         // magnitude
         *(mag_output + k) = sqrt( pow(*(rex_input + k), 2) + pow(*(imx_input + k), 2) );
-        
+        *(phase_output + k) = 0.0;
         // phase rules
         if(*(rex_input + k) == 0) {
-            *(rex_input + k) = pow(10, -20);
+            // *(rex_input + k) = pow(10, -20);
+            *(phase_output +k) = atan(*(imx_input + k) / zero_for_calc);
+        } else {
             *(phase_output +k) = atan(*(imx_input + k) / *(rex_input + k));
         }
         
-        if(*(rex_input + k) < 0 && *(imx_input + k) < 0) {
+        if((*(rex_input + k) < 0) && (*(imx_input + k) < 0)) {
             *(phase_output + k) -= M_PI;
         }
 
-        if(*(rex_input + k) < 0 && *(imx_input + k) >= 0) {
+        if((*(rex_input + k) < 0) && (*(imx_input + k) >= 0)) {
             *(phase_output + k) += M_PI;
         }
     }

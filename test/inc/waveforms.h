@@ -17,9 +17,13 @@
  * @brief Signal array sizes
  * 
  */
-#define INP_SIG_F32_1K_15K_SIZE         320
-#define IMPULSE_RESP_SIZE               29
-#define ECG_SIGNAL_SIZE                 640
+#define INP_SIG_F32_1K_15K_SIZE         (320UL)
+#define IMPULSE_RESP_SIZE               (29UL)
+#define ECG_SIGNAL_SIZE                 (640UL)
+#define ECG_IMX_SIGNAL_SIZE             (320UL)
+#define ECG_REX_SIGNAL_SIZE             (320UL)
+
+
 /**
  * @brief Input signal with 1kHz and 15kHz sine components
  * 
@@ -39,5 +43,20 @@ extern const double  Impulse_response[IMPULSE_RESP_SIZE];
  * 
  */
 extern const double ECG_signal[ECG_SIGNAL_SIZE];
+
+
+
+/**
+ * @brief ECG REX
+ * 
+ */
+extern const double ECG_REX[ECG_REX_SIGNAL_SIZE];
+
+/**
+ * @brief ECG IMX
+ * 
+ */
+extern const double ECG_IMX[ECG_IMX_SIGNAL_SIZE];
+
 
 #endif

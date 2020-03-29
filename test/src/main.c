@@ -207,10 +207,6 @@ int main(void)
                     dft_output_mag, INP_SIG_F32_1K_15K_SIZE / 2);
 
     printf("\n");
-    free(dft_output_rex);
-    free(dft_output_imx);
-    free(dft_output_mag);
-    free(idft_output_signal);
 
     /*ECG signal*/
     /*dft_ecg_output_rex*/
@@ -246,14 +242,38 @@ int main(void)
     dsp_idft(idft_ecg_output_signal, dft_ecg_output_rex, dft_ecg_output_imx, ECG_SIGNAL_SIZE);
 
     /*Cerate  DFT input signal*/
-    create_dat_file(test_abs_path, "/dat/dft/idft_ecg_output_signal.dat", 
+    create_dat_file(test_abs_path, "dat/dft/idft_ecg_output_signal.dat", 
                     idft_ecg_output_signal, ECG_SIGNAL_SIZE);
 
+
+    /*Rectengular to polar notation*/
+    printf("Rectengular to polar notation\n");
+    dsp_val_t *dft_ecg_output_mag = (dsp_val_t *) calloc(ECG_SIGNAL_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_ecg_output_mag);
+
+    dsp_val_t *dft_ecg_output_phase = (dsp_val_t *) calloc(ECG_SIGNAL_SIZE / 2, sizeof(dsp_val_t));
+    check_mem_alloc(dft_ecg_output_phase);
+    
+    dsp_rect2polar(dft_ecg_output_mag, dft_ecg_output_phase, dft_ecg_output_rex, dft_ecg_output_imx, ECG_SIGNAL_SIZE / 2);
+
+    /*Create magnitude dat file*/
+    create_dat_file(test_abs_path, "dat/dft/dft_ecg_output_mag.dat", 
+                    dft_ecg_output_mag, ECG_SIGNAL_SIZE / 2);
+
+    /*Create magnitude dat file*/
+    create_dat_file(test_abs_path, "dat/dft/dft_ecg_output_phase.dat", 
+                    dft_ecg_output_phase, ECG_SIGNAL_SIZE / 2);
+
     printf("\n");
+    free(dft_output_rex);
+    free(dft_output_imx);
+    free(dft_output_mag);
+    free(idft_output_signal);
     free(dft_ecg_output_rex);
     free(dft_ecg_output_imx);
     free(idft_ecg_output_signal);
-
+    free(dft_ecg_output_phase);
+    free(dft_ecg_output_mag);
 
 
 
@@ -302,6 +322,8 @@ static inline void check_mem_alloc(void *mem)
     if(mem == NULL) {
         fprintf(stderr, "Memmory allocation error!\n");
         exit(EXIT_FAILURE);
+    } else {
+        printf("Memmory allocated correctly (address:%p)\n", mem);
     }
 }
 
