@@ -13,20 +13,17 @@
 #include <string.h>
 #include <stdlib.h>
 
+/*Load test configuration*/
+#include "test_cfg.h"
+
 #include "dsp_common.h"
 #include "dsp_stat.h"
 #include "dsp_convolution.h"
 #include "dsp_dft.h"
 #include "waveforms.h"
 
+
 #define STR_BUFF_SIZE           1000
-
-/* Test cases */
-#define TEST_SIG_STATISTIC      1
-#define TEST_CONVOLUTION        1
-#define TEST_DFT                1
-
-#define MEM_SLOTS_NUM           6
 
 
 static inline void check_mem_alloc(void *mem);
