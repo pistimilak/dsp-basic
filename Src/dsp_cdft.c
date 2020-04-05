@@ -45,7 +45,9 @@ void dsp_cdft(dsp_val_t *input_sig_tdomain_rex, dsp_val_t *input_sig_tdomain_imx
     dsp_size_t k, i;
     dsp_val_t SR, SI, sin_cos_arg;
     
-    for(k = 0; k < sig_len, *(output_sig_fdomain_imx + k) = *(output_sig_fdomain_rex + k) = 0; k++) {
+    for(k = 0; k < sig_len; k++) {
+        
+        *(output_sig_fdomain_imx + k) = *(output_sig_fdomain_rex + k) = 0;
         
         for(i = 0; i < sig_len; i++) {
 

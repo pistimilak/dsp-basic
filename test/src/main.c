@@ -245,7 +245,7 @@ int main(void)
 
 
     /*Rectengular to polar notation*/
-    printf("Rectengular to polar notation\n");
+    // printf("Rectengular to polar notation\n");
     dsp_val_t *dft_ecg_output_mag = (dsp_val_t *) calloc(ECG_SIGNAL_SIZE / 2, sizeof(dsp_val_t));
     check_mem_alloc(dft_ecg_output_mag);
 
@@ -279,6 +279,8 @@ int main(void)
 #if TEST_CDFT
 //////////////////////////////////////////////////////////////////////////////
 
+    printf("Complex Discrete Fourier transformation test\n");
+    printf("--------------------------------------------\n");
     
     /*Create CDFT output rex array*/
     dsp_val_t *cdft_sig_output_rex = (dsp_val_t *) calloc(SIG_20HZ_REX_SIZE, sizeof(dsp_val_t));
@@ -307,6 +309,8 @@ int main(void)
     /*create cdft output imx file*/
     create_dat_file(test_abs_path, "dat/cdft/cdft_sig_output_imx.dat", 
                     cdft_sig_output_imx, SIG_20HZ_IMX_SIZE);
+
+    printf("\n");
 
     /*free memories*/
     free(cdft_sig_output_rex);
