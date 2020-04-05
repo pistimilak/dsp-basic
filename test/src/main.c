@@ -274,10 +274,10 @@ int main(void)
     free(idft_ecg_output_signal);
     free(dft_ecg_output_phase);
     free(dft_ecg_output_mag);
-
-
-
 #endif
+
+
+
 
     return 0;
 }

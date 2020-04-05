@@ -21,8 +21,9 @@
 #define IMPULSE_RESP_SIZE               (29UL)
 #define ECG_SIGNAL_SIZE                 (640UL)
 #define ECG_IMX_SIGNAL_SIZE             (320UL)
-#define ECG_REX_SIGNAL_SIZE             (320UL)
-
+#define ECG_REX_SIGNAL_SIZE             (ECG_IMX_SIGNAL_SIZE)
+#define SIG_20HZ_IMX_SIZE               (501UL)
+#define SIG_20HZ_REX_SIZE               (SIG_20HZ_IMX_SIZE)
 
 /**
  * @brief Input signal with 1kHz and 15kHz sine components
@@ -58,5 +59,18 @@ extern const double ECG_REX[ECG_REX_SIGNAL_SIZE];
  */
 extern const double ECG_IMX[ECG_IMX_SIGNAL_SIZE];
 
+
+/**
+ * @brief Complex signal 20 Hz imaginary part
+ * 
+ */
+extern const double sig_20Hz_imx[SIG_20HZ_IMX_SIZE];
+
+
+/**
+ * @brief Complex signal 20 Hz real part
+ * 
+ */
+extern const double sig_20Hz_rex[SIG_20HZ_REX_SIZE];
 
 #endif
