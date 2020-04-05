@@ -20,6 +20,7 @@
 #include "dsp_stat.h"
 #include "dsp_convolution.h"
 #include "dsp_dft.h"
+#include "dsp_cdft.h"
 #include "waveforms.h"
 
 
@@ -274,6 +275,43 @@ int main(void)
 #endif
 
 
+//////////////////////////////////////////////////////////////////////////////
+#if TEST_CDFT
+//////////////////////////////////////////////////////////////////////////////
+
+    
+    /*Create CDFT output rex array*/
+    dsp_val_t *cdft_sig_output_rex = (dsp_val_t *) calloc(SIG_20HZ_REX_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(cdft_sig_output_rex);
+    
+    /*Create CDFT output imx array*/
+    dsp_val_t *cdft_sig_output_imx = (dsp_val_t *) calloc(SIG_20HZ_IMX_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(cdft_sig_output_imx);
+    
+    /*Calculate CDFT*/
+    dsp_cdft((dsp_val_t *)sig_20Hz_rex, (dsp_val_t *)sig_20Hz_imx, 
+            cdft_sig_output_rex, cdft_sig_output_imx, SIG_20HZ_REX_SIZE);
+    
+    /*Create cdft input rex dat file*/
+    create_dat_file(test_abs_path, "dat/cdft/cdft_sig_input_rex.dat", 
+                    sig_20Hz_rex, SIG_20HZ_REX_SIZE);
+
+    /*create cdft input imx dat file*/
+    create_dat_file(test_abs_path, "dat/cdft/cdft_sig_input_imx.dat", 
+                    sig_20Hz_imx, SIG_20HZ_IMX_SIZE);
+
+    /*create cdft output rex file*/
+    create_dat_file(test_abs_path, "dat/cdft/cdft_sig_output_rex.dat", 
+                    cdft_sig_output_rex, SIG_20HZ_REX_SIZE);
+
+    /*create cdft output imx file*/
+    create_dat_file(test_abs_path, "dat/cdft/cdft_sig_output_imx.dat", 
+                    cdft_sig_output_imx, SIG_20HZ_IMX_SIZE);
+
+    /*free memories*/
+    free(cdft_sig_output_rex);
+    free(cdft_sig_output_imx);
+#endif
 
 
     return 0;
@@ -320,7 +358,7 @@ static inline void check_mem_alloc(void *mem)
         fprintf(stderr, "Memmory allocation error!\n");
         exit(EXIT_FAILURE);
     } else {
-        printf("Memmory allocated correctly (address:%p)\n", mem);
+        // printf("Memmory allocated correctly (address:%p)\n", mem);
     }
 }
 
