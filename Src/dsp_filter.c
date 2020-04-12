@@ -47,11 +47,9 @@ void dsp_lp_win_sinc_filter(dsp_val_t *output_filter, dsp_val_t input_sample_fre
     dsp_size_t i;
     
     /*calculate cutoff*/
-    // dsp_val_t c = (cutoff_freq_khz / input_sample_freq_khz);
-    const dsp_val_t c = 0.2;
+    dsp_val_t c = (cutoff_freq_khz / input_sample_freq_khz);
     
     /*calculate index, which can be negative*/
-    // int idx = 0 - (filter_len / 2);
     int offset;
     for(i = 0; i < filter_len; i++) {
 
