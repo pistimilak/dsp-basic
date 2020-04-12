@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccrfnC8g.s 			page 1
+GAS LISTING /tmp/ccRA9KgK.s 			page 1
 
 
    1              		.file	"dsp_stat.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccrfnC8g.s 			page 1
   54 0008 4989FC   		movq	%rdi, %r12
   55 000b F20F1144 		movsd	%xmm0, 8(%rsp)
   55      2408
-GAS LISTING /tmp/ccrfnC8g.s 			page 2
+GAS LISTING /tmp/ccRA9KgK.s 			page 2
 
 
   56 0011 4889F5   		movq	%rsi, %rbp
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccrfnC8g.s 			page 1
   99 008e EBCF     		jmp	.L10
  100              		.cfi_endproc
  101              	.LFE1:
-GAS LISTING /tmp/ccrfnC8g.s 			page 3
+GAS LISTING /tmp/ccRA9KgK.s 			page 3
 
 
  103              		.section	.text.dsp_sig_std_dev,"ax",@progbits
@@ -142,15 +142,15 @@ GAS LISTING /tmp/ccrfnC8g.s 			page 1
  122 0004 00000040 		.long	1073741824
  123              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
  124              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccrfnC8g.s 			page 4
+GAS LISTING /tmp/ccRA9KgK.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 dsp_stat.c
-     /tmp/ccrfnC8g.s:6      .text.dsp_sig_mean:0000000000000000 dsp_sig_mean
-     /tmp/ccrfnC8g.s:40     .text.dsp_sig_variance:0000000000000000 dsp_sig_variance
-     /tmp/ccrfnC8g.s:106    .text.dsp_sig_std_dev:0000000000000000 dsp_sig_std_dev
-     /tmp/ccrfnC8g.s:120    .rodata.cst8:0000000000000000 .LC1
+     /tmp/ccRA9KgK.s:6      .text.dsp_sig_mean:0000000000000000 dsp_sig_mean
+     /tmp/ccRA9KgK.s:40     .text.dsp_sig_variance:0000000000000000 dsp_sig_variance
+     /tmp/ccRA9KgK.s:106    .text.dsp_sig_std_dev:0000000000000000 dsp_sig_std_dev
+     /tmp/ccRA9KgK.s:120    .rodata.cst8:0000000000000000 .LC1
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccLIFCRk.s 			page 1
+GAS LISTING /tmp/ccfWC2yS.s 			page 1
 
 
    1              		.file	"dsp_dft.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
   49 0055 83E201   		andl	$1, %edx
   50 0058 4809D0   		orq	%rdx, %rax
   51 005b 660FEFC0 		pxor	%xmm0, %xmm0
-GAS LISTING /tmp/ccLIFCRk.s 			page 2
+GAS LISTING /tmp/ccfWC2yS.s 			page 2
 
 
   52 005f F2480F2A 		cvtsi2sdq	%rax, %xmm0
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
   88 00f4 0F8831FF 		js	.L4
   88      FFFF
   89 00fa 660FEFC0 		pxor	%xmm0, %xmm0
-GAS LISTING /tmp/ccLIFCRk.s 			page 3
+GAS LISTING /tmp/ccfWC2yS.s 			page 3
 
 
   90 00fe F2490F2A 		cvtsi2sdq	%r12, %xmm0
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  130              		.cfi_def_cfa_offset 24
  131 0183 415E     		popq	%r14
  132              		.cfi_def_cfa_offset 16
-GAS LISTING /tmp/ccLIFCRk.s 			page 4
+GAS LISTING /tmp/ccfWC2yS.s 			page 4
 
 
  133 0185 415F     		popq	%r15
@@ -238,7 +238,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  183      2420
  184 004e F20F593D 		mulsd	.LC2(%rip), %xmm7
  184      00000000 
-GAS LISTING /tmp/ccLIFCRk.s 			page 5
+GAS LISTING /tmp/ccfWC2yS.s 			page 5
 
 
  185 0056 F20F117C 		movsd	%xmm7, 40(%rsp)
@@ -298,7 +298,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  226 00ee 498D2CDE 		leaq	(%r14,%rbx,8), %rbp
  227 00f2 F20F5845 		addsd	0(%rbp), %xmm0
  227      00
-GAS LISTING /tmp/ccLIFCRk.s 			page 6
+GAS LISTING /tmp/ccfWC2yS.s 			page 6
 
 
  228 00f7 F20F1145 		movsd	%xmm0, 0(%rbp)
@@ -358,7 +358,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  265 018d F20F5E74 		divsd	48(%rsp), %xmm6
  265      2430
  266 0193 F20F1174 		movsd	%xmm6, 24(%rsp)
-GAS LISTING /tmp/ccLIFCRk.s 			page 7
+GAS LISTING /tmp/ccfWC2yS.s 			page 7
 
 
  266      2418
@@ -418,7 +418,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  316 0009 53       		pushq	%rbx
  317              		.cfi_def_cfa_offset 56
  318              		.cfi_offset 3, -56
-GAS LISTING /tmp/ccLIFCRk.s 			page 8
+GAS LISTING /tmp/ccfWC2yS.s 			page 8
 
 
  319 000a 4883EC18 		subq	$24, %rsp
@@ -478,7 +478,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  363              		.globl	dsp_rect2polar
  365              	dsp_rect2polar:
  366              	.LFB3:
-GAS LISTING /tmp/ccLIFCRk.s 			page 9
+GAS LISTING /tmp/ccfWC2yS.s 			page 9
 
 
  367              		.cfi_startproc
@@ -538,7 +538,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  409 0062 4983C401 		addq	$1, %r12
  410              	.L37:
  411 0066 4C3B6424 		cmpq	16(%rsp), %r12
-GAS LISTING /tmp/ccLIFCRk.s 			page 10
+GAS LISTING /tmp/ccfWC2yS.s 			page 10
 
 
  411      10
@@ -598,7 +598,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  442      4500
  443 0109 0F8644FF 		jbe	.L41
  443      FFFF
-GAS LISTING /tmp/ccLIFCRk.s 			page 11
+GAS LISTING /tmp/ccfWC2yS.s 			page 11
 
 
  444 010f F20F1003 		movsd	(%rbx), %xmm0
@@ -658,7 +658,7 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  492 0004 00000080 		.long	-2147483648
  493 0008 00000000 		.long	0
  494 000c 00000000 		.long	0
-GAS LISTING /tmp/ccLIFCRk.s 			page 12
+GAS LISTING /tmp/ccfWC2yS.s 			page 12
 
 
  495              		.section	.rodata.cst8
@@ -680,23 +680,23 @@ GAS LISTING /tmp/ccLIFCRk.s 			page 1
  511 0034 FB210940 		.long	1074340347
  512              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
  513              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccLIFCRk.s 			page 13
+GAS LISTING /tmp/ccfWC2yS.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 dsp_dft.c
-     /tmp/ccLIFCRk.s:6      .text.dsp_dft:0000000000000000 dsp_dft
-     /tmp/ccLIFCRk.s:142    .text.dsp_idft:0000000000000000 dsp_idft
-     /tmp/ccLIFCRk.s:298    .text.dsp_dft_magnitude:0000000000000000 dsp_dft_magnitude
-     /tmp/ccLIFCRk.s:365    .text.dsp_rect2polar:0000000000000000 dsp_rect2polar
-     /tmp/ccLIFCRk.s:481    .rodata.cst8:0000000000000008 .LC1
-     /tmp/ccLIFCRk.s:485    .rodata.cst8:0000000000000010 .LC2
-     /tmp/ccLIFCRk.s:490    .rodata.cst16:0000000000000000 .LC3
-     /tmp/ccLIFCRk.s:497    .rodata.cst8:0000000000000018 .LC4
-     /tmp/ccLIFCRk.s:501    .rodata.cst8:0000000000000020 .LC5
-     /tmp/ccLIFCRk.s:505    .rodata.cst8:0000000000000028 .LC6
-     /tmp/ccLIFCRk.s:477    .rodata.cst8:0000000000000000 .LC0
-     /tmp/ccLIFCRk.s:509    .rodata.cst8:0000000000000030 .LC7
+     /tmp/ccfWC2yS.s:6      .text.dsp_dft:0000000000000000 dsp_dft
+     /tmp/ccfWC2yS.s:142    .text.dsp_idft:0000000000000000 dsp_idft
+     /tmp/ccfWC2yS.s:298    .text.dsp_dft_magnitude:0000000000000000 dsp_dft_magnitude
+     /tmp/ccfWC2yS.s:365    .text.dsp_rect2polar:0000000000000000 dsp_rect2polar
+     /tmp/ccfWC2yS.s:481    .rodata.cst8:0000000000000008 .LC1
+     /tmp/ccfWC2yS.s:485    .rodata.cst8:0000000000000010 .LC2
+     /tmp/ccfWC2yS.s:490    .rodata.cst16:0000000000000000 .LC3
+     /tmp/ccfWC2yS.s:497    .rodata.cst8:0000000000000018 .LC4
+     /tmp/ccfWC2yS.s:501    .rodata.cst8:0000000000000020 .LC5
+     /tmp/ccfWC2yS.s:505    .rodata.cst8:0000000000000028 .LC6
+     /tmp/ccfWC2yS.s:477    .rodata.cst8:0000000000000000 .LC0
+     /tmp/ccfWC2yS.s:509    .rodata.cst8:0000000000000030 .LC7
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

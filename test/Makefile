@@ -36,6 +36,7 @@ $(DSP_DIR)/Src/dsp_stat.c \
 $(DSP_DIR)/Src/dsp_convolution.c \
 $(DSP_DIR)/Src/dsp_dft.c \
 $(DSP_DIR)/Src/dsp_cdft.c \
+$(DSP_DIR)/Src/dsp_filter.c \
 src/waveforms.c \
 src/main.c 
 

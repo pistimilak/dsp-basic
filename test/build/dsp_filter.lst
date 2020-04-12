@@ -1,0 +1,272 @@
+GAS LISTING /tmp/cc08Jedw.s 			page 1
+
+
+   1              		.file	"dsp_filter.c"
+   2              		.text
+   3              		.section	.text.dsp_hamming_window,"ax",@progbits
+   4              		.globl	dsp_hamming_window
+   6              	dsp_hamming_window:
+   7              	.LFB1:
+   8              		.cfi_startproc
+   9 0000 4883EC08 		subq	$8, %rsp
+  10              		.cfi_def_cfa_offset 16
+  11 0004 660FEFC0 		pxor	%xmm0, %xmm0
+  12 0008 F20F2AC7 		cvtsi2sd	%edi, %xmm0
+  13 000c F20F5905 		mulsd	.LC0(%rip), %xmm0
+  13      00000000 
+  14 0014 4885F6   		testq	%rsi, %rsi
+  15 0017 782F     		js	.L2
+  16 0019 660FEFC9 		pxor	%xmm1, %xmm1
+  17 001d F2480F2A 		cvtsi2sdq	%rsi, %xmm1
+  17      CE
+  18              	.L3:
+  19 0022 F20F5EC1 		divsd	%xmm1, %xmm0
+  20 0026 E8000000 		call	cos@PLT
+  20      00
+  21 002b 660F28C8 		movapd	%xmm0, %xmm1
+  22 002f F20F590D 		mulsd	.LC1(%rip), %xmm1
+  22      00000000 
+  23 0037 F20F1005 		movsd	.LC2(%rip), %xmm0
+  23      00000000 
+  24 003f F20F5CC1 		subsd	%xmm1, %xmm0
+  25 0043 4883C408 		addq	$8, %rsp
+  26              		.cfi_remember_state
+  27              		.cfi_def_cfa_offset 8
+  28 0047 C3       		ret
+  29              	.L2:
+  30              		.cfi_restore_state
+  31 0048 4889F0   		movq	%rsi, %rax
+  32 004b 48D1E8   		shrq	%rax
+  33 004e 83E601   		andl	$1, %esi
+  34 0051 4809F0   		orq	%rsi, %rax
+  35 0054 660FEFC9 		pxor	%xmm1, %xmm1
+  36 0058 F2480F2A 		cvtsi2sdq	%rax, %xmm1
+  36      C8
+  37 005d F20F58C9 		addsd	%xmm1, %xmm1
+  38 0061 EBBF     		jmp	.L3
+  39              		.cfi_endproc
+  40              	.LFE1:
+  42              		.section	.text.dsp_lp_win_sinc_filter,"ax",@progbits
+  43              		.globl	dsp_lp_win_sinc_filter
+  45              	dsp_lp_win_sinc_filter:
+  46              	.LFB0:
+  47              		.cfi_startproc
+  48 0000 4156     		pushq	%r14
+  49              		.cfi_def_cfa_offset 16
+  50              		.cfi_offset 14, -16
+  51 0002 4155     		pushq	%r13
+  52              		.cfi_def_cfa_offset 24
+  53              		.cfi_offset 13, -24
+  54 0004 4154     		pushq	%r12
+GAS LISTING /tmp/cc08Jedw.s 			page 2
+
+
+  55              		.cfi_def_cfa_offset 32
+  56              		.cfi_offset 12, -32
+  57 0006 55       		pushq	%rbp
+  58              		.cfi_def_cfa_offset 40
+  59              		.cfi_offset 6, -40
+  60 0007 53       		pushq	%rbx
+  61              		.cfi_def_cfa_offset 48
+  62              		.cfi_offset 3, -48
+  63 0008 4883EC10 		subq	$16, %rsp
+  64              		.cfi_def_cfa_offset 64
+  65 000c 4989FC   		movq	%rdi, %r12
+  66 000f 4989F5   		movq	%rsi, %r13
+  67 0012 4889D5   		movq	%rdx, %rbp
+  68 0015 BB000000 		movl	$0, %ebx
+  68      00
+  69 001a EB49     		jmp	.L6
+  70              	.L7:
+  71 001c 660FEFC9 		pxor	%xmm1, %xmm1
+  72 0020 F20F2AC9 		cvtsi2sd	%ecx, %xmm1
+  73 0024 F20F114C 		movsd	%xmm1, 8(%rsp)
+  73      2408
+  74 002a 660F28C1 		movapd	%xmm1, %xmm0
+  75 002e F20F5905 		mulsd	.LC3(%rip), %xmm0
+  75      00000000 
+  76 0036 E8000000 		call	sin@PLT
+  76      00
+  77 003b 4D8D34DC 		leaq	(%r12,%rbx,8), %r14
+  78 003f F20F5E44 		divsd	8(%rsp), %xmm0
+  78      2408
+  79 0045 F2410F11 		movsd	%xmm0, (%r14)
+  79      06
+  80 004a 4D85ED   		testq	%r13, %r13
+  81 004d 7434     		je	.L12
+  82 004f 4889EE   		movq	%rbp, %rsi
+  83 0052 89DF     		movl	%ebx, %edi
+  84 0054 41FFD5   		call	*%r13
+  85 0057 F2410F59 		mulsd	(%r14), %xmm0
+  85      06
+  86 005c F2410F11 		movsd	%xmm0, (%r14)
+  86      06
+  87              	.L8:
+  88 0061 4883C301 		addq	$1, %rbx
+  89              	.L6:
+  90 0065 4839EB   		cmpq	%rbp, %rbx
+  91 0068 732F     		jnb	.L13
+  92 006a 4889E8   		movq	%rbp, %rax
+  93 006d 48D1E8   		shrq	%rax
+  94 0070 89D9     		movl	%ebx, %ecx
+  95 0072 29C1     		subl	%eax, %ecx
+  96 0074 75A6     		jne	.L7
+  97 0076 488B0500 		movq	.LC3(%rip), %rax
+  97      000000
+  98 007d 498904DC 		movq	%rax, (%r12,%rbx,8)
+  99 0081 EBDE     		jmp	.L8
+ 100              	.L12:
+ 101 0083 4889EE   		movq	%rbp, %rsi
+ 102 0086 89DF     		movl	%ebx, %edi
+GAS LISTING /tmp/cc08Jedw.s 			page 3
+
+
+ 103 0088 E8000000 		call	dsp_hamming_window
+ 103      00
+ 104 008d F2410F59 		mulsd	(%r14), %xmm0
+ 104      06
+ 105 0092 F2410F11 		movsd	%xmm0, (%r14)
+ 105      06
+ 106 0097 EBC8     		jmp	.L8
+ 107              	.L13:
+ 108 0099 4883C410 		addq	$16, %rsp
+ 109              		.cfi_def_cfa_offset 48
+ 110 009d 5B       		popq	%rbx
+ 111              		.cfi_def_cfa_offset 40
+ 112 009e 5D       		popq	%rbp
+ 113              		.cfi_def_cfa_offset 32
+ 114 009f 415C     		popq	%r12
+ 115              		.cfi_def_cfa_offset 24
+ 116 00a1 415D     		popq	%r13
+ 117              		.cfi_def_cfa_offset 16
+ 118 00a3 415E     		popq	%r14
+ 119              		.cfi_def_cfa_offset 8
+ 120 00a5 C3       		ret
+ 121              		.cfi_endproc
+ 122              	.LFE0:
+ 124              		.section	.text.dsp_blackman_window,"ax",@progbits
+ 125              		.globl	dsp_blackman_window
+ 127              	dsp_blackman_window:
+ 128              	.LFB2:
+ 129              		.cfi_startproc
+ 130 0000 4883EC28 		subq	$40, %rsp
+ 131              		.cfi_def_cfa_offset 48
+ 132 0004 660FEFD2 		pxor	%xmm2, %xmm2
+ 133 0008 F20F2AD7 		cvtsi2sd	%edi, %xmm2
+ 134 000c F20F1154 		movsd	%xmm2, 16(%rsp)
+ 134      2410
+ 135 0012 660F28C2 		movapd	%xmm2, %xmm0
+ 136 0016 F20F5905 		mulsd	.LC0(%rip), %xmm0
+ 136      00000000 
+ 137 001e 4885F6   		testq	%rsi, %rsi
+ 138 0021 7860     		js	.L15
+ 139 0023 660FEFE4 		pxor	%xmm4, %xmm4
+ 140 0027 F2480F2A 		cvtsi2sdq	%rsi, %xmm4
+ 140      E6
+ 141 002c F20F1164 		movsd	%xmm4, 8(%rsp)
+ 141      2408
+ 142              	.L16:
+ 143 0032 F20F5E44 		divsd	8(%rsp), %xmm0
+ 143      2408
+ 144 0038 E8000000 		call	cos@PLT
+ 144      00
+ 145 003d F20F5905 		mulsd	.LC4(%rip), %xmm0
+ 145      00000000 
+ 146 0045 F20F100D 		movsd	.LC5(%rip), %xmm1
+ 146      00000000 
+ 147 004d F20F5CC8 		subsd	%xmm0, %xmm1
+ 148 0051 F20F114C 		movsd	%xmm1, 24(%rsp)
+ 148      2418
+ 149 0057 F20F1044 		movsd	16(%rsp), %xmm0
+GAS LISTING /tmp/cc08Jedw.s 			page 4
+
+
+ 149      2410
+ 150 005d F20F5905 		mulsd	.LC6(%rip), %xmm0
+ 150      00000000 
+ 151 0065 F20F5E44 		divsd	8(%rsp), %xmm0
+ 151      2408
+ 152 006b E8000000 		call	cos@PLT
+ 152      00
+ 153 0070 F20F5905 		mulsd	.LC7(%rip), %xmm0
+ 153      00000000 
+ 154 0078 F20F5844 		addsd	24(%rsp), %xmm0
+ 154      2418
+ 155 007e 4883C428 		addq	$40, %rsp
+ 156              		.cfi_remember_state
+ 157              		.cfi_def_cfa_offset 8
+ 158 0082 C3       		ret
+ 159              	.L15:
+ 160              		.cfi_restore_state
+ 161 0083 4889F0   		movq	%rsi, %rax
+ 162 0086 48D1E8   		shrq	%rax
+ 163 0089 83E601   		andl	$1, %esi
+ 164 008c 4809F0   		orq	%rsi, %rax
+ 165 008f 660FEFC9 		pxor	%xmm1, %xmm1
+ 166 0093 F2480F2A 		cvtsi2sdq	%rax, %xmm1
+ 166      C8
+ 167 0098 F20F58C9 		addsd	%xmm1, %xmm1
+ 168 009c F20F114C 		movsd	%xmm1, 8(%rsp)
+ 168      2408
+ 169 00a2 EB8E     		jmp	.L16
+ 170              		.cfi_endproc
+ 171              	.LFE2:
+ 173              		.section	.rodata.cst8,"aM",@progbits,8
+ 174              		.align 8
+ 175              	.LC0:
+ 176 0000 182D4454 		.long	1413754136
+ 177 0004 FB211940 		.long	1075388923
+ 178              		.align 8
+ 179              	.LC1:
+ 180 0008 713D0AD7 		.long	3607772529
+ 181 000c A370DD3F 		.long	1071476899
+ 182              		.align 8
+ 183              	.LC2:
+ 184 0010 48E17A14 		.long	343597384
+ 185 0014 AE47E13F 		.long	1071728558
+ 186              		.align 8
+ 187              	.LC3:
+ 188 0018 E0F09C76 		.long	1989996768
+ 189 001c 2F1BF43F 		.long	1072962351
+ 190              		.align 8
+ 191              	.LC4:
+ 192 0020 00000000 		.long	0
+ 193 0024 0000E03F 		.long	1071644672
+ 194              		.align 8
+ 195              	.LC5:
+ 196 0028 E17A14AE 		.long	2920577761
+ 197 002c 47E1DA3F 		.long	1071309127
+ 198              		.align 8
+ 199              	.LC6:
+GAS LISTING /tmp/cc08Jedw.s 			page 5
+
+
+ 200 0030 182D4454 		.long	1413754136
+ 201 0034 FB212940 		.long	1076437499
+ 202              		.align 8
+ 203              	.LC7:
+ 204 0038 7B14AE47 		.long	1202590843
+ 205 003c E17AB43F 		.long	1068792545
+ 206              		.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+ 207              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/cc08Jedw.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 dsp_filter.c
+     /tmp/cc08Jedw.s:6      .text.dsp_hamming_window:0000000000000000 dsp_hamming_window
+     /tmp/cc08Jedw.s:45     .text.dsp_lp_win_sinc_filter:0000000000000000 dsp_lp_win_sinc_filter
+     /tmp/cc08Jedw.s:127    .text.dsp_blackman_window:0000000000000000 dsp_blackman_window
+     /tmp/cc08Jedw.s:175    .rodata.cst8:0000000000000000 .LC0
+     /tmp/cc08Jedw.s:179    .rodata.cst8:0000000000000008 .LC1
+     /tmp/cc08Jedw.s:183    .rodata.cst8:0000000000000010 .LC2
+     /tmp/cc08Jedw.s:187    .rodata.cst8:0000000000000018 .LC3
+     /tmp/cc08Jedw.s:191    .rodata.cst8:0000000000000020 .LC4
+     /tmp/cc08Jedw.s:195    .rodata.cst8:0000000000000028 .LC5
+     /tmp/cc08Jedw.s:199    .rodata.cst8:0000000000000030 .LC6
+     /tmp/cc08Jedw.s:203    .rodata.cst8:0000000000000038 .LC7
+
+UNDEFINED SYMBOLS
+_GLOBAL_OFFSET_TABLE_
+cos
+sin

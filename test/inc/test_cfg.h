@@ -13,5 +13,6 @@
 #define TEST_CONVOLUTION        1
 #define TEST_DFT                1
 #define TEST_CDFT               1
+#define TEST_FILTER             1
 
 #endif
