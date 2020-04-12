@@ -1,6 +1,6 @@
 # Istvan Milak
 # Band-pass windowed sinc filter plot
-# $ gnuplot -p lp_win_sinc.plot
+# $ gnuplot -p bp_win_sinc.plot
 
 reset
 set terminal canvas size 1024,768

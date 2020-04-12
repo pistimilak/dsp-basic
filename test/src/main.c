@@ -322,6 +322,10 @@ int main(void)
 #if TEST_FILTER
     printf("Filter tests\n");
     printf("------------\n");
+
+
+    printf("\n");
+    printf("Low-pass filter test:\n");
     /*Allocate filter kernel storage*/
     dsp_val_t *lp_filter = (dsp_val_t *) calloc(IMPULSE_RESP_SIZE, sizeof(dsp_val_t));
     check_mem_alloc(lp_filter);
@@ -330,8 +334,10 @@ int main(void)
     dsp_val_t *filter_conv_output = (dsp_val_t *)calloc(IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
     check_mem_alloc(filter_conv_output);
     
+    /*Create Low-pass filter*/
     dsp_lp_win_sinc_filter(lp_filter, 48.0, 10.0, NULL, IMPULSE_RESP_SIZE);
 
+    /*Convolution with low-pass filter*/
     dsp_convolution(filter_conv_output, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, lp_filter, IMPULSE_RESP_SIZE);
 
 
@@ -340,7 +346,7 @@ int main(void)
                     (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
 
 
-    /*Create convolution impulse response dat file*/
+    /*Create low pass filter dat file*/
     create_dat_file(test_abs_path, "dat/filter/lp_win_sinc_filter.dat", 
                     lp_filter, IMPULSE_RESP_SIZE);
 
@@ -349,19 +355,57 @@ int main(void)
     create_dat_file(test_abs_path, "dat/filter/lp_conv_output.dat", 
                     filter_conv_output, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE);
 
-    dsp_val_t *bp_filter = (dsp_val_t *) calloc(IMPULSE_RESP_SIZE, sizeof(dsp_val_t));
-    check_mem_alloc(lp_filter);
+    /////////////////////////////////////
+    printf("\n");
+    printf("High-pass filter test:\n");
+    /*Allocate band-pass filter memory*/
+    dsp_val_t *hp_filter = (dsp_val_t *) calloc(IMPULSE_RESP_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(hp_filter);
 
+    /*Create Low-pass filter*/
+    dsp_hp_win_sinc_filter(hp_filter, 48.0, 0.1, NULL, IMPULSE_RESP_SIZE);
+
+    /*Convolution with low-pass filter*/
+    dsp_convolution(filter_conv_output, 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, 
+                    hp_filter, IMPULSE_RESP_SIZE);
+
+
+    /*Create convolution input signal dat file*/
+    create_dat_file(test_abs_path, "dat/filter/hp_input_signal.dat", 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
+
+
+    /*Create high pass filter dat file*/
+    create_dat_file(test_abs_path, "dat/filter/hp_win_sinc_filter.dat", 
+                    hp_filter, IMPULSE_RESP_SIZE);
+
+
+    /*Create convolution output signal */
+    create_dat_file(test_abs_path, "dat/filter/hp_conv_output.dat", 
+                    filter_conv_output, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE);
+
+    /////////////////////////////////////
+    printf("\n");
+    printf("Band-pass filter test:\n");
+    /*Allocate band-pass filter memory*/
+    dsp_val_t *bp_filter = (dsp_val_t *) calloc(IMPULSE_RESP_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(bp_filter);
+
+    /*Create band-pass filter*/
     dsp_bp_win_sinc_filter(bp_filter, 48.0, 0.1, 5.28, dsp_hamming_window, IMPULSE_RESP_SIZE);
 
-    dsp_convolution(filter_conv_output, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, lp_filter, IMPULSE_RESP_SIZE);
+    /*Create convolution with band pass filter*/
+    dsp_convolution(filter_conv_output, 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, 
+                    bp_filter, IMPULSE_RESP_SIZE);
 
     /*Create convolution input signal dat file*/
     create_dat_file(test_abs_path, "dat/filter/bp_input_signal.dat", 
                     (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
 
 
-    /*Create convolution impulse response dat file*/
+    /*Create band pass filter dat file*/
     create_dat_file(test_abs_path, "dat/filter/bp_win_sinc_filter.dat", 
                     bp_filter, IMPULSE_RESP_SIZE);
 
@@ -373,13 +417,10 @@ int main(void)
 
     /*Free memories*/
     free(lp_filter);
+    free(hp_filter);
     free(bp_filter);
     free(filter_conv_output);
     printf("\n");
-
-
-    
-
 #endif
 
     return 0;
