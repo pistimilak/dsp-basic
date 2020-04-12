@@ -320,18 +320,19 @@ int main(void)
 
 
 #if TEST_FILTER
-
+    printf("Filter tests\n");
+    printf("------------\n");
     /*Allocate filter kernel storage*/
     dsp_val_t *lp_filter = (dsp_val_t *) calloc(IMPULSE_RESP_SIZE, sizeof(dsp_val_t));
     check_mem_alloc(lp_filter);
 
     /*Allocate convolution output storage*/
-    dsp_val_t *lp_conv_output = (dsp_val_t *)calloc(IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
-    check_mem_alloc(lp_conv_output);
+    dsp_val_t *filter_conv_output = (dsp_val_t *)calloc(IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(filter_conv_output);
     
     dsp_lp_win_sinc_filter(lp_filter, 48.0, 10.0, NULL, IMPULSE_RESP_SIZE);
 
-    dsp_convolution(lp_conv_output, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, lp_filter, IMPULSE_RESP_SIZE);
+    dsp_convolution(filter_conv_output, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, lp_filter, IMPULSE_RESP_SIZE);
 
 
     /*Create convolution input signal dat file*/
@@ -346,14 +347,38 @@ int main(void)
 
     /*Create convolution output signal */
     create_dat_file(test_abs_path, "dat/filter/lp_conv_output.dat", 
-                    lp_conv_output, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE);
+                    filter_conv_output, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE);
 
+    dsp_val_t *bp_filter = (dsp_val_t *) calloc(IMPULSE_RESP_SIZE, sizeof(dsp_val_t));
+    check_mem_alloc(lp_filter);
+
+    dsp_bp_win_sinc_filter(bp_filter, 48.0, 0.1, 5.28, dsp_hamming_window, IMPULSE_RESP_SIZE);
+
+    dsp_convolution(filter_conv_output, (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE, lp_filter, IMPULSE_RESP_SIZE);
+
+    /*Create convolution input signal dat file*/
+    create_dat_file(test_abs_path, "dat/filter/bp_input_signal.dat", 
+                    (dsp_val_t *)InputSignal_f32_1kHz_15kHz, INP_SIG_F32_1K_15K_SIZE);
+
+
+    /*Create convolution impulse response dat file*/
+    create_dat_file(test_abs_path, "dat/filter/bp_win_sinc_filter.dat", 
+                    bp_filter, IMPULSE_RESP_SIZE);
+
+
+    /*Create convolution output signal */
+    create_dat_file(test_abs_path, "dat/filter/bp_conv_output.dat", 
+                    filter_conv_output, IMPULSE_RESP_SIZE + INP_SIG_F32_1K_15K_SIZE);
 
 
     /*Free memories*/
     free(lp_filter);
-    free(lp_conv_output);
+    free(bp_filter);
+    free(filter_conv_output);
     printf("\n");
+
+
+    
 
 #endif
 
