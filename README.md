@@ -1,6 +1,8 @@
 # dsp-basic
 Basic DSP calculations and features in C
 
+# Contents of library
+
 ## Signal statistic features
 * mean calculation
 * variance calculation
@@ -13,6 +15,14 @@ Basic DSP calculations and features in C
 ## Discrete Fourier Transform:
 * DFT
 * IDFT
+
+## Windowed Sinc Filters
+* Low-pass filter
+* High-pass filter
+* Band-pass filter
+
+# Test
+There is a unit test makefile project for testing. The test results are \*.dat files. For visualizing result, gnuplot is prefered and scripst are also included in the project.
 
 
 ## Reference
